@@ -1,11 +1,12 @@
-<div id="div-form">
+
+<section id="form">
 
     <h2>Cadastro de Atleta</h2>
 
-    <form>
+    <form id="form-atleta">
 
         <label for="nome">
-            Nome Completo
+            Nome Completo*
         </label>
 
         <input
@@ -13,12 +14,14 @@
             id="nome"
             name="nome"
             class="input01"
+            maxlength="60"
+            required
             [(ngModel)]="atleta.nome"
-            placeholder="Digite seu nome completo"
+            placeholder="Digite o nome completo"
         >
 
         <label for="cpf">
-            CPF
+            CPF*
         </label>
 
         <input
@@ -26,9 +29,10 @@
             id="cpf"
             name="cpf"
             class="input02"
+            maxlength="14"
+            required
             [(ngModel)]="atleta.cpf"
             (input)="formatarCPF()"
-            maxlength="14"
             placeholder="000.000.000-00"
         >
 
@@ -39,7 +43,10 @@
         <input
             type="radio"
             name="sexo"
+            id="sexoM"
+            class="radio01"
             value="M"
+            required
             [(ngModel)]="atleta.sexo"
         >
         Masculino
@@ -47,7 +54,10 @@
         <input
             type="radio"
             name="sexo"
+            id="sexoF"
+            class="radio01"
             value="F"
+            required
             [(ngModel)]="atleta.sexo"
         >
         Feminino
@@ -55,13 +65,16 @@
         <input
             type="radio"
             name="sexo"
+            id="sexoN"
+            class="radio01"
             value="N"
+            required
             [(ngModel)]="atleta.sexo"
         >
-        Não se identificar
+        Não Declarar
 
         <label for="cep">
-            CEP
+            CEP*
         </label>
 
         <input
@@ -69,14 +82,15 @@
             id="cep"
             name="cep"
             class="input02"
+            maxlength="9"
+            required
             [(ngModel)]="atleta.cep"
             (input)="formatarCEP()"
-            maxlength="9"
             placeholder="00000-000"
         >
 
         <label for="rua">
-            Rua / Logradouro
+            Rua/Logradouro*
         </label>
 
         <input
@@ -84,12 +98,14 @@
             id="rua"
             name="rua"
             class="input01"
+            maxlength="100"
+            required
             [(ngModel)]="atleta.rua"
-            placeholder="Rua / Logradouro"
+            placeholder="Digite a Rua ou o Logradouro"
         >
 
         <label for="bairro">
-            Bairro
+            Bairro*
         </label>
 
         <input
@@ -97,12 +113,14 @@
             id="bairro"
             name="bairro"
             class="input02"
+            maxlength="60"
+            required
             [(ngModel)]="atleta.bairro"
-            placeholder="Bairro"
+            placeholder="Digite o bairro"
         >
 
         <label for="cidade">
-            Cidade
+            Cidade*
         </label>
 
         <input
@@ -110,8 +128,10 @@
             id="cidade"
             name="cidade"
             class="input02"
+            maxlength="60"
+            required
             [(ngModel)]="atleta.cidade"
-            placeholder="Cidade"
+            placeholder="Digite a cidade"
         >
 
         <label for="uf">
@@ -135,7 +155,7 @@
                 id="btnAdd"
                 (click)="cadastrarAtleta()"
             >
-                Cadastrar Atleta
+                Cadastrar
             </button>
 
             <button
@@ -150,4 +170,5 @@
 
     </form>
 
-</div>
+</section>
+
