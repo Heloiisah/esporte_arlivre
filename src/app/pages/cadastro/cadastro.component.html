@@ -1,0 +1,183 @@
+<section class="pagina">
+
+    <div class="titulo">
+  
+      <span>🏃</span>
+  
+      <h1>Cadastro de Atleta</h1>
+  
+      <p>
+        Cadastre seus dados para participar das corridas.
+      </p>
+  
+    </div>
+  
+    <div class="formulario">
+  
+      <form (ngSubmit)="cadastrar()">
+  
+        <div class="campo">
+  
+          <label>Nome completo</label>
+  
+          <input
+            type="text"
+            name="nome"
+            [(ngModel)]="atleta.nome"
+            placeholder="Digite seu nome"
+          >
+  
+        </div>
+  
+        <div class="linha">
+  
+          <div class="campo">
+  
+            <label>CPF</label>
+  
+            <input
+              type="text"
+              name="cpf"
+              [(ngModel)]="atleta.cpf"
+              (input)="formatarCPF()"
+              placeholder="000.000.000-00"
+              maxlength="14"
+            >
+  
+          </div>
+  
+          <div class="campo">
+  
+            <label>Sexo</label>
+  
+            <select
+              name="sexo"
+              [(ngModel)]="atleta.sexo"
+            >
+  
+              <option value="">
+                Selecione
+              </option>
+  
+              <option value="Feminino">
+                Feminino
+              </option>
+  
+              <option value="Masculino">
+                Masculino
+              </option>
+  
+            </select>
+  
+          </div>
+  
+        </div>
+  
+        <div class="campo">
+  
+          <label>CEP</label>
+  
+          <input
+            type="text"
+            name="cep"
+            [(ngModel)]="atleta.cep"
+            (input)="formatarCEP()"
+            placeholder="00000-000"
+            maxlength="9"
+          >
+  
+        </div>
+  
+        <div class="linha">
+  
+          <div class="campo">
+  
+            <label>Rua</label>
+  
+            <input
+              type="text"
+              name="rua"
+              [(ngModel)]="atleta.rua"
+              placeholder="Digite sua rua"
+            >
+  
+          </div>
+  
+          <div class="campo">
+  
+            <label>Bairro</label>
+  
+            <input
+              type="text"
+              name="bairro"
+              [(ngModel)]="atleta.bairro"
+              placeholder="Digite seu bairro"
+            >
+  
+          </div>
+  
+        </div>
+  
+        <div class="linha">
+  
+          <div class="campo">
+  
+            <label>Cidade</label>
+  
+            <input
+              type="text"
+              name="cidade"
+              [(ngModel)]="atleta.cidade"
+              placeholder="Digite sua cidade"
+            >
+  
+          </div>
+  
+          <div class="campo campo-uf">
+  
+            <label>UF</label>
+  
+            <input
+              type="text"
+              name="uf"
+              [(ngModel)]="atleta.uf"
+              maxlength="2"
+              placeholder="UF"
+            >
+  
+          </div>
+  
+        </div>
+  
+        <div class="botoes">
+  
+          <button
+            type="button"
+            class="btn-limpar"
+            (click)="limpar()"
+          >
+            Limpar
+          </button>
+  
+          <button
+            type="submit"
+            class="btn-cadastrar"
+          >
+            Cadastrar Atleta
+          </button>
+  
+        </div>
+  
+        @if (mensagem) {
+  
+          <div class="mensagem">
+            {{ mensagem }}
+          </div>
+  
+        }
+  
+      </form>
+  
+    </div>
+  
+  </section>

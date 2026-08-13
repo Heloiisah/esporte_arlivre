@@ -1,0 +1,24 @@
+<div class="campo">
+
+  <label>Nome do atleta</label>
+
+  <select
+    name="atleta"
+    [(ngModel)]="inscricao.atleta"
+  >
+
+    <option value="">
+      Selecione um atleta
+    </option>
+
+    @for (atleta of atletas; track atleta.cpf) {
+
+      <option [value]="atleta.nome">
+        {{ atleta.nome }}
+      </option>
+
+    }
+
+  </select>
+
+</div>

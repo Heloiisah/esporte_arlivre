@@ -1,0 +1,94 @@
+.pagina {
+    min-height: 100vh;
+    background: #f7f1ff;
+    padding: 50px 20px;
+  }
+  
+  .formulario {
+    max-width: 550px;
+    margin: auto;
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(80, 30, 120, 0.15);
+  }
+  
+  .formulario h1 {
+    text-align: center;
+    color: #5b1880;
+    margin-bottom: 10px;
+  }
+  
+  .formulario > p {
+    text-align: center;
+    color: #766582;
+    margin-bottom: 30px;
+  }
+  
+  .campo {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 25px;
+  }
+  
+  .campo label {
+    color: #5b1880;
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+  
+  .campo input[type="text"],
+  .campo input[type="date"] {
+    padding: 12px;
+    border: 1px solid #c9a7dd;
+    border-radius: 7px;
+    outline: none;
+  }
+  
+  .campo input:focus {
+    border-color: #6a1b9a;
+  }
+  
+  .distancias {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+  }
+  
+  .opcao {
+    background: #eee1ff;
+    padding: 12px 18px;
+    border-radius: 8px;
+    color: #5b1880;
+    cursor: pointer;
+  }
+  
+  .opcao input {
+    margin-right: 7px;
+  }
+  
+  button {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 8px;
+    background: #6a1b9a;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background: #4a126d;
+  }
+  
+  .mensagem {
+    margin-top: 20px;
+    padding: 15px;
+    text-align: center;
+    background: #ead7ff;
+    color: #5b1880;
+    border-radius: 8px;
+    font-weight: bold;
+  }

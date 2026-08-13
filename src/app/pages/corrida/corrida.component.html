@@ -1,0 +1,97 @@
+<div class="pagina">
+
+    <div class="formulario">
+  
+      <h1>Cadastrar Corrida</h1>
+  
+      <p>
+        Cadastre uma nova corrida no sistema.
+      </p>
+  
+      <form (ngSubmit)="cadastrar()">
+  
+        <div class="campo">
+  
+          <label>Descrição da corrida</label>
+  
+          <input
+            type="text"
+            name="descricao"
+            [(ngModel)]="corrida.descricao"
+            placeholder="Digite o nome da corrida"
+          >
+  
+        </div>
+  
+        <div class="campo">
+  
+          <label>Data da corrida</label>
+  
+          <input
+            type="date"
+            name="data"
+            [(ngModel)]="corrida.data"
+          >
+  
+        </div>
+  
+        <div class="campo">
+  
+          <label>Distâncias</label>
+  
+          <div class="distancias">
+  
+            <label class="opcao">
+  
+              <input
+                type="checkbox"
+                (change)="selecionarDistancia('5km')"
+              >
+  
+              5 km
+  
+            </label>
+  
+            <label class="opcao">
+  
+              <input
+                type="checkbox"
+                (change)="selecionarDistancia('10km')"
+              >
+  
+              10 km
+  
+            </label>
+  
+            <label class="opcao">
+  
+              <input
+                type="checkbox"
+                (change)="selecionarDistancia('25km')"
+              >
+  
+              25 km
+  
+            </label>
+  
+          </div>
+  
+        </div>
+  
+        <button type="submit">
+          Cadastrar corrida
+        </button>
+  
+      </form>
+  
+      @if (mensagem) {
+  
+        <div class="mensagem">
+          {{ mensagem }}
+        </div>
+  
+      }
+  
+    </div>
+  
+  </div>

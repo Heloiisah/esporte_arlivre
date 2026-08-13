@@ -1,0 +1,53 @@
+.menu {
+    height: 75px;
+    background: #5b1880;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+  }
+  
+  .logo {
+    color: white;
+    font-size: 21px;
+    font-weight: bold;
+  }
+  
+  .logo span {
+    margin-left: 5px;
+  }
+  
+  .links {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .links a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 13px;
+    border-radius: 6px;
+    font-size: 14px;
+  }
+  
+  .links a:hover {
+    background: #7b2fa0;
+  }
+  
+  @media (max-width: 900px) {
+  
+    .menu {
+      height: auto;
+      padding: 15px 20px;
+      flex-direction: column;
+      gap: 15px;
+    }
+  
+    .links {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  
+  }
