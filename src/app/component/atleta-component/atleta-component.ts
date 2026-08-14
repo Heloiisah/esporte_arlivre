@@ -1,107 +1,237 @@
 import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { FormsModule, NgForm } from '@angular/forms';
+import { AtletaService } from '../../services/atleta-service';
+import { Pessoa } from '../../models/Pessoa';
 
-import { EsporteService } from '../../services/esporte.service';
+interface Estado {
+  sigla: string;
+  nome: string;
+}
+
+interface Municipio {
+  id: number;
+  nome: string;
+}
 
 @Component({
   selector: 'app-atleta-component',
   standalone: true,
-  imports: [FormsModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './atleta-component.html',
   styleUrl: './atleta-component.css',
 })
 export class AtletaComponent {
 
-  atleta: any = {
-    nome: '',
-    cpf: '',
-    sexo: '',
-    cep: '',
-    rua: '',
-    bairro: '',
-    cidade: '',
-    uf: ''
-  };
+  nome = '';
+  cpf = '';
+  sexo = '';
+  cep = '';
+  ruaLogradouro = '';
+  bairro = '';
+  cidade = '';
+  uf = '';
 
-  constructor(private esporteService: EsporteService) {
+  mensagemSucesso = '';
+  mensagemErro = '';
 
-  }
+  estados: Estado[] = [
+    { sigla: 'AC', nome: 'Acre' },
+    { sigla: 'AL', nome: 'Alagoas' },
+    { sigla: 'AP', nome: 'Amapá' },
+    { sigla: 'AM', nome: 'Amazonas' },
+    { sigla: 'BA', nome: 'Bahia' },
+    { sigla: 'CE', nome: 'Ceará' },
+    { sigla: 'DF', nome: 'Distrito Federal' },
+    { sigla: 'ES', nome: 'Espírito Santo' },
+    { sigla: 'GO', nome: 'Goiás' },
+    { sigla: 'MA', nome: 'Maranhão' },
+    { sigla: 'MT', nome: 'Mato Grosso' },
+    { sigla: 'MS', nome: 'Mato Grosso do Sul' },
+    { sigla: 'MG', nome: 'Minas Gerais' },
+    { sigla: 'PA', nome: 'Pará' },
+    { sigla: 'PB', nome: 'Paraíba' },
+    { sigla: 'PR', nome: 'Paraná' },
+    { sigla: 'PE', nome: 'Pernambuco' },
+    { sigla: 'PI', nome: 'Piauí' },
+    { sigla: 'RJ', nome: 'Rio de Janeiro' },
+    { sigla: 'RN', nome: 'Rio Grande do Norte' },
+    { sigla: 'RS', nome: 'Rio Grande do Sul' },
+    { sigla: 'RO', nome: 'Rondônia' },
+    { sigla: 'RR', nome: 'Roraima' },
+    { sigla: 'SC', nome: 'Santa Catarina' },
+    { sigla: 'SP', nome: 'São Paulo' },
+    { sigla: 'SE', nome: 'Sergipe' },
+    { sigla: 'TO', nome: 'Tocantins' }
+  ];
 
-  cadastrarAtleta() {
+  municipios: Municipio[] = [];
 
-    if (
-      this.atleta.nome == '' ||
-      this.atleta.cpf == '' ||
-      this.atleta.sexo == '' ||
-      this.atleta.cep == ''
-    ) {
-      alert('Preencha os campos obrigatórios!');
-      return;
+  constructor(private atletaService: AtletaService) {}
+
+  mascararCPF(): void {
+    let valor = this.cpf.replace(/\D/g, '');
+
+    if (valor.length > 11) {
+      valor = valor.substring(0, 11);
     }
 
-    this.esporteService.cadastrarAtleta(this.atleta);
-
-    alert('Atleta cadastrado com sucesso!');
-
-    this.limpar();
-
-  }
-
-  limpar() {
-
-    this.atleta = {
-      nome: '',
-      cpf: '',
-      sexo: '',
-      cep: '',
-      rua: '',
-      bairro: '',
-      cidade: '',
-      uf: ''
-    };
-
-  }
-
-  formatarCPF() {
-
-    let cpf = this.atleta.cpf.replace(/\D/g, '');
-
-    cpf = cpf.substring(0, 11);
-
-    if (cpf.length > 9) {
-      cpf = cpf.replace(
-        /(\d{3})(\d{3})(\d{3})(\d{2})/,
+    if (valor.length > 9) {
+      valor = valor.replace(
+        /(\d{3})(\d{3})(\d{3})(\d{1,2})/,
         '$1.$2.$3-$4'
       );
-    } else if (cpf.length > 6) {
-      cpf = cpf.replace(
+    } else if (valor.length > 6) {
+      valor = valor.replace(
         /(\d{3})(\d{3})(\d{1,3})/,
         '$1.$2.$3'
       );
-    } else if (cpf.length > 3) {
-      cpf = cpf.replace(
+    } else if (valor.length > 3) {
+      valor = valor.replace(
         /(\d{3})(\d{1,3})/,
         '$1.$2'
       );
     }
 
-    this.atleta.cpf = cpf;
+    this.cpf = valor;
   }
 
-  formatarCEP() {
+  mascararCEP(): void {
+    let valor = this.cep.replace(/\D/g, '');
 
-    let cep = this.atleta.cep.replace(/\D/g, '');
+    if (valor.length > 8) {
+      valor = valor.substring(0, 8);
+    }
 
-    cep = cep.substring(0, 8);
-
-    if (cep.length > 5) {
-      cep = cep.replace(
-        /(\d{5})(\d{3})/,
+    if (valor.length > 5) {
+      valor = valor.replace(
+        /(\d{5})(\d{1,3})/,
         '$1-$2'
       );
     }
 
-    this.atleta.cep = cep;
+    this.cep = valor;
   }
 
+  carregarMunicipios(): void {
+    this.cidade = '';
+    this.municipios = [];
+
+    if (!this.uf) {
+      return;
+    }
+
+    fetch(
+      `https://servicodados.ibge.gov.br/api/v1/localidades/estados/${this.uf}/municipios`
+    )
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Erro ao carregar municípios.');
+        }
+
+        return response.json();
+      })
+      .then(dados => {
+        this.municipios = dados;
+      })
+      .catch(erro => {
+        console.error('Erro ao carregar municípios:', erro);
+
+        this.mensagemErro =
+          'Não foi possível carregar os municípios.';
+      });
+  }
+
+  exibeDados(): void {
+    console.log(
+      this.nome,
+      this.cpf,
+      this.sexo,
+      this.cep,
+      this.ruaLogradouro,
+      this.bairro,
+      this.cidade,
+      this.uf
+    );
+  }
+
+  salvarAtleta(formulario: NgForm): void {
+
+    this.mensagemSucesso = '';
+    this.mensagemErro = '';
+
+    if (formulario.invalid) {
+
+      this.mensagemErro =
+        'Por favor, preencha todos os campos obrigatórios.';
+
+      formulario.control.markAllAsTouched();
+
+      return;
+    }
+
+    if (this.cpf.length !== 14) {
+
+      this.mensagemErro =
+        'Digite um CPF completo.';
+
+      return;
+    }
+
+    if (this.cep.length !== 9) {
+
+      this.mensagemErro =
+        'Digite um CEP completo.';
+
+      return;
+    }
+
+    const pessoaAtleta = new Pessoa();
+
+    pessoaAtleta.nome = this.nome;
+    pessoaAtleta.cpf = this.cpf;
+    pessoaAtleta.sexo = this.sexo;
+    pessoaAtleta.cep = this.cep;
+    pessoaAtleta.ruaLogradoro = this.ruaLogradouro;
+    pessoaAtleta.bairro = this.bairro;
+    pessoaAtleta.cidade = this.cidade;
+    pessoaAtleta.uf = this.uf;
+
+    this.atletaService.adicionar(pessoaAtleta);
+
+    this.mensagemSucesso =
+      'Atleta cadastrado com sucesso!';
+
+    formulario.resetForm();
+
+    this.nome = '';
+    this.cpf = '';
+    this.sexo = '';
+    this.cep = '';
+    this.ruaLogradouro = '';
+    this.bairro = '';
+    this.cidade = '';
+    this.uf = '';
+
+    this.municipios = [];
+
+    console.log('ATLETA CADASTRADO COM SUCESSO!');
+  }
+
+  limparAtributos(): void {
+
+    this.nome = '';
+    this.cpf = '';
+    this.sexo = '';
+    this.cep = '';
+    this.ruaLogradouro = '';
+    this.bairro = '';
+    this.cidade = '';
+    this.uf = '';
+
+    this.municipios = [];
+
+    this.mensagemSucesso = '';
+    this.mensagemErro = '';
+  }
 }

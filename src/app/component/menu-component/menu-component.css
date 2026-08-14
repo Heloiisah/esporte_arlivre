@@ -1,53 +1,277 @@
-.menu {
-    height: 75px;
-    background: #5b1880;
+/* =========================================
+   CONFIGURAÇÃO GERAL
+========================================= */
+
+#cabecalho,
+#logo,
+#menu-ul {
     display: flex;
+
     align-items: center;
+}
+
+
+/* =========================================
+   LOGO E MENU
+========================================= */
+
+#logo,
+#menu-ul {
+    height: 100%;
+
+    color: #FFFFFF;
+
+    justify-content: center;
+}
+
+
+/* =========================================
+   CABEÇALHO
+========================================= */
+
+#cabecalho {
+
+    width: 1000px;
+
+    max-width: 95%;
+
+    height: 100px;
+
+    margin: 25px auto;
+
+    padding: 15px;
+
+    box-sizing: border-box;
+
     justify-content: space-between;
-    padding: 0 40px;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
-  }
-  
-  .logo {
-    color: white;
-    font-size: 21px;
-    font-weight: bold;
-  }
-  
-  .logo span {
-    margin-left: 5px;
-  }
-  
-  .links {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  
-  .links a {
-    color: white;
+
+    /* UMA ÚNICA COR */
+    background-color: #6A1B9A;
+
+    border: 1px solid #B39DDB;
+
+    border-radius: 16px;
+
+    box-shadow:
+        0 10px 30px rgba(82, 48, 120, 0.25);
+}
+
+
+/* =========================================
+   ÁREA DO LOGO
+========================================= */
+
+#logo {
+
+    width: 180px;
+
+    flex-shrink: 0;
+
+}
+
+
+/* =========================================
+   MENU
+========================================= */
+
+#menu-ul {
+
+    width: 790px;
+
+    list-style: none;
+
+    justify-content: flex-end;
+
+    gap: 5px;
+
+}
+
+
+/* =========================================
+   LINKS
+========================================= */
+
+.lnk-menu {
+
+    display: block;
+
+    padding: 10px 14px;
+
     text-decoration: none;
-    padding: 10px 13px;
-    border-radius: 6px;
-    font-size: 14px;
-  }
-  
-  .links a:hover {
-    background: #7b2fa0;
-  }
-  
-  @media (max-width: 900px) {
-  
-    .menu {
-      height: auto;
-      padding: 15px 20px;
-      flex-direction: column;
-      gap: 15px;
+
+    color: #FFFFFF;
+
+    font-size: 15px;
+
+    font-weight: 600;
+
+    border-radius: 8px;
+
+    transition:
+        background-color 0.25s ease,
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+/* =========================================
+   HOVER DOS LINKS
+========================================= */
+
+.lnk-menu:hover {
+
+    background-color: #B39DDB;
+
+    color: #FFFFFF;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 4px 10px rgba(82, 48, 120, 0.25);
+
+}
+
+
+/* =========================================
+   LOGO
+========================================= */
+
+#titulo-logo {
+
+    padding: 8px 12px;
+
+    margin: 0 4px;
+
+    color: #FFFFFF;
+
+    text-transform: uppercase;
+
+    letter-spacing: 4px;
+
+    font-size: 16px;
+
+    font-weight: 700;
+
+    border: 2px solid #B39DDB;
+
+    border-radius: 7px;
+
+    background-color: rgba(255, 255, 255, 0.10);
+
+    box-shadow:
+        0 3px 8px rgba(82, 48, 120, 0.15);
+
+}
+
+
+/* =========================================
+   RESPONSIVIDADE
+========================================= */
+
+@media (max-width: 1050px) {
+
+    #cabecalho {
+
+        width: 95%;
+
     }
-  
-    .links {
-      flex-wrap: wrap;
-      justify-content: center;
+
+
+    #menu-ul {
+
+        width: auto;
+
     }
-  
-  }
+
+}
+
+
+/* =========================================
+   TABLET / CELULAR
+========================================= */
+
+@media (max-width: 750px) {
+
+    #cabecalho {
+
+        height: auto;
+
+        min-height: 100px;
+
+        flex-direction: column;
+
+        gap: 10px;
+
+        padding: 15px;
+
+    }
+
+
+    #logo {
+
+        width: 100%;
+
+        height: auto;
+
+    }
+
+
+    #menu-ul {
+
+        width: 100%;
+
+        height: auto;
+
+        flex-wrap: wrap;
+
+        justify-content: center;
+
+    }
+
+
+    .lnk-menu {
+
+        padding: 8px 10px;
+
+        font-size: 13px;
+
+    }
+
+}
+
+
+/* =========================================
+   CELULAR PEQUENO
+========================================= */
+
+@media (max-width: 500px) {
+
+    #cabecalho {
+
+        width: 95%;
+
+        margin: 15px auto;
+
+        border-radius: 12px;
+
+    }
+
+
+    #titulo-logo {
+
+        font-size: 14px;
+
+        letter-spacing: 3px;
+
+    }
+
+
+    .lnk-menu {
+
+        font-size: 12px;
+
+        padding: 7px 8px;
+
+    }
+
+}

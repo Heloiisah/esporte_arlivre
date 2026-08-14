@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { EsporteService } from '../../services/esporte.service';
+import { FormsModule, NgForm } from '@angular/forms';
+import { AtletaService } from '../../services/atleta-service';
 
 @Component({
   selector: 'app-corrida',
@@ -11,57 +11,167 @@ import { EsporteService } from '../../services/esporte.service';
 })
 export class CorridaComponent {
 
-  corrida: any = {
+  corrida = {
     id: 0,
     descricao: '',
     data: '',
-    distancias: []
+    distancias: [] as string[]
   };
 
-  mensagem: string = '';
+  mensagem = '';
+  mensagemErro = '';
 
-  constructor(private esporteService: EsporteService) {
-  }
 
-  selecionarDistancia(distancia: string) {
+  constructor(
+    private atletaService: AtletaService
+  ) {}
+
+
+  // =========================================
+  // SELECIONAR DISTÂNCIA
+  // =========================================
+
+  selecionarDistancia(
+    distancia: string
+  ): void {
 
     if (this.corrida.distancias.includes(distancia)) {
 
-      this.corrida.distancias = this.corrida.distancias.filter(
-        (item: string) => item != distancia
-      );
+      this.corrida.distancias =
+        this.corrida.distancias.filter(
+          item => item !== distancia
+        );
 
     } else {
 
-      this.corrida.distancias.push(distancia);
+      this.corrida.distancias.push(
+        distancia
+      );
 
     }
 
   }
 
-  cadastrar() {
 
-    if (
-      this.corrida.descricao == '' ||
-      this.corrida.data == '' ||
-      this.corrida.distancias.length == 0
-    ) {
+  // =========================================
+  // CADASTRAR CORRIDA
+  // =========================================
 
-      alert('Preencha todos os campos!');
+  cadastrar(
+    formulario: NgForm
+  ): void {
+
+    this.mensagem = '';
+    this.mensagemErro = '';
+
+
+    // Verifica os campos obrigatórios
+
+    if (formulario.invalid) {
+
+      this.mensagemErro =
+        'Preencha todos os campos obrigatórios.';
+
+      formulario.control.markAllAsTouched();
+
       return;
 
     }
 
-    this.esporteService.cadastrarCorrida(this.corrida);
 
-    this.mensagem = 'Corrida cadastrada com sucesso!';
+    // Verifica se uma distância foi selecionada
+
+    if (this.corrida.distancias.length === 0) {
+
+      this.mensagemErro =
+        'Selecione uma distância para a corrida.';
+
+      return;
+
+    }
+
+
+    // =========================================
+    // CRIA UMA CÓPIA DA CORRIDA
+    // =========================================
+
+    const novaCorrida = {
+
+      id: 0,
+
+      descricao:
+        this.corrida.descricao,
+
+      data:
+        this.corrida.data,
+
+      distancias:
+        [...this.corrida.distancias]
+
+    };
+
+
+    // =========================================
+    // SALVA A CORRIDA
+    // =========================================
+
+    this.atletaService.cadastrarCorrida(
+      novaCorrida
+    );
+
+
+    // =========================================
+    // MENSAGEM
+    // =========================================
+
+    this.mensagem =
+      'Corrida cadastrada com sucesso!';
+
+
+    // =========================================
+    // LIMPA O FORMULÁRIO
+    // =========================================
+
+    formulario.resetForm();
+
 
     this.corrida = {
+
       id: 0,
+
       descricao: '',
+
       data: '',
+
       distancias: []
+
     };
+
+  }
+
+
+  // =========================================
+  // LIMPAR
+  // =========================================
+
+  limpar(): void {
+
+    this.corrida = {
+
+      id: 0,
+
+      descricao: '',
+
+      data: '',
+
+      distancias: []
+
+    };
+
+
+    this.mensagem = '';
+
+    this.mensagemErro = '';
 
   }
 

@@ -1,21 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700;800&display=swap');
+
+
+/* 
+   CONFIGURAÇÕES GERAIS
+ */
+
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  body {
-    font-family: Arial, sans-serif;
-    background: #f5efff;
-    color: #3d245c;
-  }
-  
-  button,
-  input,
-  select {
-    font-family: Arial, sans-serif;
-  }
-  
-  a {
-    text-decoration: none;
-  }
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  font-family: 'Roboto', sans-serif;
+}
+
+
+/* 
+   CORES DO PROJETO
+ */
+
+:root {
+
+  /* ROXO PRINCIPAL */
+  --cor-primaria: #56008C;
+
+  /* LILÁS DE DESTAQUE */
+  --cor-secundaria: #AF69CD;
+
+  /* LILÁS CLARO */
+  --cor-destaque: #F1DDF7;
+
+  /* FUNDO */
+  --cor-fundo: #EEE3F4;
+
+  /* BRANCO */
+  --branca: #FFFFFF;
+
+  /* BOTÕES */
+  --cor-botao1: #56008C;
+  --cor-botao2: #AF69CD;
+
+  /* CORES EXTRAS */
+  --cor01: #56008C;
+  --cor02: #AF69CD;
+
+  /* TEXTO */
+  --cor-texto: #3F294A;
+
+  /* BORDA */
+  --cor-borda: #D5B9E1;
+
+}
+
+
+/* 
+   BODY
+ */
+
+body {
+
+  min-height: 100vh;
+
+  background:
+    linear-gradient(
+      135deg,
+      #F1E7F5,
+      #E6D8EF
+    );
+
+  color: var(--cor-texto);
+
+}
+
+
+/* 
+   BOTÕES GERAIS
+ */
+
+button {
+
+  font-family: 'Roboto', sans-serif;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+
+button:hover {
+
+  transform: translateY(-2px);
+
+}
+
+
+/* 
+   INPUTS GERAIS
+ */
+
+input,
+select,
+textarea {
+
+  font-family: 'Roboto', sans-serif;
+
+}
+
+
+/* 
+   SELEÇÃO DE TEXTO
+ */
+
+::selection {
+
+  background: var(--cor-secundaria);
+
+  color: var(--branca);
+
+}

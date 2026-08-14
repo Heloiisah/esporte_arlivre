@@ -1,20 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CardEsporteComponent } from './atleta-component';
+import { AtletaComponent } from './atleta-component';
 
-describe('CardEsporteComponent', () => {
-  let component: CardEsporteComponent;
-  let fixture: ComponentFixture<CardEsporteComponent>;
+describe('AtletaComponent', () => {
+  let component: AtletaComponent;
+  let fixture: ComponentFixture<AtletaComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CardEsporteComponent]
-    })
-    .compileComponents();
-    
-    fixture = TestBed.createComponent(CardEsporteComponent);
+      imports: [AtletaComponent],
+    }).compileComponents();
+
+    fixture = TestBed.createComponent(AtletaComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
+    await fixture.whenStable();
   });
 
   it('should create', () => {

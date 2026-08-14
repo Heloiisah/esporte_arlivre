@@ -1,10 +1,14 @@
 import { Routes } from '@angular/router';
 
-import { HomeComponent } from './pages/home/home.component';
-import { CadastroComponent } from './pages/cadastro/cadastro.component';
-import { LoginComponent } from './pages/login/login.component';
+import { HomeComponent } from './component/home-component/home-component';
+import { AtletaComponent } from './component/atleta-component/atleta-component';
+
 import { CorridaComponent } from './pages/corrida/corrida.component';
+
+import { CorridasDisponiveisComponent } from './pages/corridas-disponiveis/corridas-disponiveis.component';
+
 import { InscricaoComponent } from './pages/inscricao/inscricao.component';
+
 
 export const routes: Routes = [
 
@@ -14,25 +18,36 @@ export const routes: Routes = [
     pathMatch: 'full'
   },
 
+
   {
     path: 'home',
     component: HomeComponent
   },
 
-  {
-    path: 'cadastro',
-    component: CadastroComponent
-  },
 
   {
-    path: 'login',
-    component: LoginComponent
+    path: 'cadastroatleta',
+    component: AtletaComponent
   },
+
 
   {
     path: 'corrida',
     component: CorridaComponent
   },
+
+
+  {
+    path: 'cadastrocorrida',
+    component: CorridaComponent
+  },
+
+
+  {
+    path: 'corridas-disponiveis',
+    component: CorridasDisponiveisComponent
+  },
+
 
   {
     path: 'inscricao',
