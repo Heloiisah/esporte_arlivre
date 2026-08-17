@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Pessoa } from '../models/Pessoa';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -11,6 +12,51 @@ export class AtletaService {
 
   // Lista de corridas cadastradas
   private corridas: any[] = [];
+
+  constructor(private http: HttpClient) {}
+
+  // =========================
+  // MÉTODOS DOS ATLETAS
+  // =========================
+
+  listarAtletas(): Observable<Pessoa[]> {
+    const urlApi =
+      'https://a67f6d923183f5d88b41a61.mockapi.io/esportearlivre/atleta';
+
+    return this.http.get<Pessoa[]>(urlApi);
+  }
+
+  listarAtleta(idAtleta: number): Observable<Pessoa> {
+    const urlApi =
+      `https://a67f6d923183f5d88b41a61.mockapi.io/esportearlivre/atleta/${idAtleta}`;
+
+    return this.http.get<Pessoa>(urlApi);
+  }
+
+  salvarAtleta(pessoa: Pessoa): Observable<Pessoa> {
+    const urlApi =
+      'https://a67f6d923183f5d88b41a61.mockapi.io/esportearlivre/atleta';
+
+    return this.http.post<Pessoa>(urlApi, pessoa);
+  }
+
+  excluirAtleta(idAtleta: number): Observable<Pessoa> {
+    const urlApi =
+      `https://a67f6d923183f5d88b41a61.mockapi.io/esportearlivre/atleta/${idAtleta}`;
+
+    return this.http.delete<Pessoa>(urlApi);
+  }
+
+  alterarAtleta(pessoa: Pessoa): Observable<Pessoa> {
+    const urlApi =
+      `https://a67f6d923183f5d88b41a61.mockapi.io/esportearlivre/atleta/${pessoa.id}`;
+
+    return this.http.put<Pessoa>(urlApi, pessoa);
+  }
+
+  // =========================
+  // MÉTODOS ANTIGOS
+  // =========================
 
   adicionar(pessoa: Pessoa) {
     // ARRRMENGUEEEE PARA GERAR O ID
@@ -43,6 +89,10 @@ export class AtletaService {
       this.atletas[posArray] = pessoa;
     }
   }
+
+  // =========================
+  // CORRIDAS
+  // =========================
 
   // CADASTRAR CORRIDA
   cadastrarCorrida(corrida: any) {
