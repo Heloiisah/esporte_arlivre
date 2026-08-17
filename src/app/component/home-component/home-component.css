@@ -2,222 +2,77 @@
    HOME
 ========================================= */
 
-#div-home {
-
+#section-home {
   width: 1000px;
-
   max-width: 95%;
-
-  height: 650px;
-
-  margin: 40px auto;
-
+  height: 600px;
+  margin: 30px auto;
   display: flex;
-
   align-items: center;
-
   justify-content: center;
-
   box-sizing: border-box;
-
-  background:
-    linear-gradient(
-      135deg,
-      #F3EEFA,
-      #EAE2F4
-    );
-
-  border: 2px solid #B39DDB;
-
+  background: linear-gradient(135deg, #F3EEFA, #EAE2F4);
+  border: 2px solid var(--cor-borda, #B39DDB);
   border-radius: 18px;
-
-  color: #6A1B9A;
-
+  font-size: 55px;
   box-shadow:
     0 10px 30px rgba(82, 48, 120, 0.16),
     0 4px 10px rgba(82, 48, 120, 0.08);
-
 }
 
-
 /* =========================================
-   ÁREA DO CONTEÚDO
+   TÍTULOS
 ========================================= */
 
-#div-home p {
-
-  margin: 0;
-
-  text-transform: uppercase;
-
-  font-size: 70px;
-
+#titulo-esporte {
+  color: var(--cor-primaria, #56008C);
+  margin-right: 15px;
+  letter-spacing: 4px;
   font-weight: 800;
-
-  color: #6A1B9A;
-
-  letter-spacing: 2px;
-
-  text-align: center;
-
-}
-
-
-/* =========================================
-   TÍTULO DA HOME
-========================================= */
-
-#titulo-home {
-
   text-transform: uppercase;
-
-  margin: 0 20px;
-
-  padding: 28px 45px;
-
-  color: #FFFFFF;
-
-  background:
-    linear-gradient(
-      135deg,
-      #6A1B9A,
-      #7B2AAE,
-      #B39DDB
-    );
-
-  border: 2px solid #B39DDB;
-
-  border-radius: 14px;
-
-  letter-spacing: 5px;
-
-  text-align: center;
-
-  box-shadow:
-    0 10px 25px rgba(82, 48, 120, 0.28);
-
-  transition:
-    transform 0.25s ease,
-    box-shadow 0.25s ease;
-
 }
 
-
-/* =========================================
-   EFEITO DO TÍTULO
-========================================= */
-
-#titulo-home:hover {
-
-  transform: translateY(-5px);
-
-  box-shadow:
-    0 15px 32px rgba(82, 48, 120, 0.35);
-
+#titulo-arlivre {
+  border: 2px solid var(--cor-primaria, #56008C);
+  padding: 10px 30px;
+  color: var(--cor-primaria, #56008C);
+  background-color: #FFFFFF;
+  font-weight: 800;
+  border-radius: 1000px;
+  box-shadow: 0 6px 20px rgba(82, 48, 120, 0.15);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-
-/* =========================================
-   DETALHE DO TÍTULO
-========================================= */
-
-#titulo-home::after {
-
-  content: "";
-
-  display: block;
-
-  width: 60px;
-
-  height: 3px;
-
-  margin: 12px auto 0;
-
-  background-color: #B39DDB;
-
-  border-radius: 5px;
-
+#titulo-arlivre:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(82, 48, 120, 0.25);
 }
-
 
 /* =========================================
    RESPONSIVIDADE
 ========================================= */
 
 @media (max-width: 750px) {
-
-  #div-home {
-
+  #section-home {
     width: 95%;
-
-    height: 500px;
-
-    margin: 30px auto;
-
+    height: 450px;
+    font-size: 36px;
+    flex-direction: column;
+    gap: 20px;
   }
 
-
-  #div-home p {
-
-    font-size: 45px;
-
+  #titulo-esporte {
+    margin-right: 0;
   }
-
-
-  #titulo-home {
-
-    padding: 22px 28px;
-
-    font-size: 28px;
-
-    letter-spacing: 3px;
-
-  }
-
 }
 
-
-/* =========================================
-   CELULAR
-========================================= */
-
 @media (max-width: 500px) {
-
-  #div-home {
-
-    width: 95%;
-
-    height: 400px;
-
+  #section-home {
+    height: 350px;
+    font-size: 26px;
   }
 
-
-  #div-home p {
-
-    font-size: 32px;
-
+  #titulo-arlivre {
+    padding: 8px 20px;
   }
-
-
-  #titulo-home {
-
-    margin: 0 10px;
-
-    padding: 18px 20px;
-
-    font-size: 22px;
-
-    letter-spacing: 2px;
-
-  }
-
-
-  #titulo-home::after {
-
-    width: 45px;
-
-    height: 2px;
-
-  }
-
 }

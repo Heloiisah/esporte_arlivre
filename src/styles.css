@@ -1,25 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700;800&display=swap');
 
-
 /* 
    CONFIGURAÇÕES GERAIS
- */
+*/
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-
   font-family: 'Roboto', sans-serif;
 }
 
-
 /* 
-   CORES DO PROJETO
- */
+   CORES DO PROJETO (PALETA ROXO / LILÁS)
+*/
 
 :root {
-
   /* ROXO PRINCIPAL */
   --cor-primaria: #56008C;
 
@@ -38,6 +34,8 @@
   /* BOTÕES */
   --cor-botao1: #56008C;
   --cor-botao2: #AF69CD;
+  --botao01: #56008C;
+  --botao02: #AF69CD;
 
   /* CORES EXTRAS */
   --cor01: #56008C;
@@ -48,75 +46,47 @@
 
   /* BORDA */
   --cor-borda: #D5B9E1;
-
 }
-
 
 /* 
    BODY
- */
+*/
 
 body {
-
   min-height: 100vh;
-
-  background:
-    linear-gradient(
-      135deg,
-      #F1E7F5,
-      #E6D8EF
-    );
-
+  background: linear-gradient(135deg, #F1E7F5, #E6D8EF);
   color: var(--cor-texto);
-
 }
-
 
 /* 
    BOTÕES GERAIS
- */
+*/
 
 button {
-
   font-family: 'Roboto', sans-serif;
-
   cursor: pointer;
-
-  transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease,
-    background 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
 }
-
 
 button:hover {
-
   transform: translateY(-2px);
-
 }
-
 
 /* 
    INPUTS GERAIS
- */
+*/
 
 input,
 select,
 textarea {
-
   font-family: 'Roboto', sans-serif;
-
 }
-
 
 /* 
    SELEÇÃO DE TEXTO
- */
+*/
 
 ::selection {
-
   background: var(--cor-secundaria);
-
   color: var(--branca);
-
 }

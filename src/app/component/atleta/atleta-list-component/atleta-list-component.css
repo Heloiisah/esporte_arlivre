@@ -13,7 +13,7 @@
   padding: 32px 35px;
   box-sizing: border-box;
   background-color: #FFFFFF;
-  border: 1px solid #D7CBE5;
+  border: 1px solid var(--cor-borda, #D7CBE5);
   border-radius: 16px;
   box-shadow: 0 10px 30px rgba(82, 48, 120, 0.12), 0 3px 10px rgba(82, 48, 120, 0.06);
 }
@@ -21,72 +21,13 @@
 h2 {
   margin: 0 0 25px;
   padding-bottom: 15px;
-  color: #6A1B9A;
+  color: var(--cor-primaria, #56008C);
   font-size: 24px;
   font-weight: 700;
-  border-bottom: 2px solid #B39DDB;
+  border-bottom: 2px solid var(--cor-borda, #B39DDB);
 }
 
-.actions {
-  margin-bottom: 20px;
-  text-align: right;
-}
-
-.btn-novo {
-  background-color: #6A1B9A;
-  color: #FFFFFF;
-  padding: 10px 20px;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: 700;
-  font-size: 13px;
-  transition: 0.2s ease;
-  display: inline-block;
-}
-
-.btn-novo:hover {
-  background-color: #7B2AAE;
-  transform: translateY(-2px);
-}
-
-.tabela-atletas {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-.tabela-atletas th, .tabela-atletas td {
-  padding: 12px 15px;
-  text-align: left;
-  border-bottom: 1px solid #EAE2F4;
+p {
   color: #40364A;
-  font-size: 14px;
-}
-
-.tabela-atletas th {
-  background-color: #F3EEFA;
-  color: #6A1B9A;
-  font-weight: 600;
-}
-
-.btn-editar {
-  background-color: #F3EEFA;
-  color: #6A1B9A;
-  padding: 6px 12px;
-  border: 1px solid #B39DDB;
-  border-radius: 4px;
-  text-decoration: none;
-  font-size: 12px;
-  font-weight: 600;
-  transition: 0.2s ease;
-}
-
-.btn-editar:hover {
-  background-color: #E8E0F2;
-}
-
-.mensagem-vazia {
-  text-align: center;
-  padding: 20px;
-  color: #8B8095;
-  font-size: 14px;
+  font-size: 15px;
 }
