@@ -1,0 +1,290 @@
+<div id="div-form">
+
+  <h2>Cadastro de Atleta</h2>
+
+  <!-- MENSAGEM DE SUCESSO -->
+  <div
+    *ngIf="mensagemSucesso"
+    class="mensagem sucesso"
+  >
+    {{ mensagemSucesso }}
+  </div>
+
+  <!-- MENSAGEM DE ERRO -->
+  <div
+    *ngIf="mensagemErro"
+    class="mensagem erro"
+  >
+     {{ mensagemErro }}
+  </div>
+
+  <form
+    id="form-atleta"
+    #formAtleta="ngForm"
+    (ngSubmit)="salvarAtleta(formAtleta)"
+    novalidate
+  >
+
+    <!-- NOME -->
+    <div class="campo nome">
+      <label for="nome">Nome Completo</label>
+
+      <input
+        type="text"
+        name="nome"
+        [(ngModel)]="nome"
+        id="nome"
+        required
+        minlength="3"
+        maxlength="80"
+        placeholder="Digite seu nome completo"
+        #nomeCampo="ngModel"
+      >
+
+      <div
+        class="mensagem-campo"
+        *ngIf="nomeCampo.invalid && nomeCampo.touched"
+      >
+        Informe seu nome.
+      </div>
+    </div>
+
+
+    <!-- CPF -->
+    <div class="campo cpf">
+      <label for="cpf">CPF</label>
+
+      <input
+        type="text"
+        name="cpf"
+        [(ngModel)]="cpf"
+        id="cpf"
+        required
+        maxlength="14"
+        placeholder="000.000.000-00"
+        (input)="mascararCPF()"
+        #cpfCampo="ngModel"
+      >
+
+      <div
+        class="mensagem-campo"
+        *ngIf="cpfCampo.invalid && cpfCampo.touched"
+      >
+        Informe seu CPF.
+      </div>
+
+      <div
+        class="mensagem-campo"
+        *ngIf="cpf && cpf.length < 14 && cpfCampo.touched"
+      >
+        CPF incompleto.
+      </div>
+    </div>
+
+
+    <!-- SEXO -->
+    <div class="campo sexo">
+
+      <label>Sexo</label>
+
+      <select
+        name="sexo"
+        [(ngModel)]="sexo"
+        required
+      >
+        <option value="">Selecione</option>
+        <option value="M">Masculino</option>
+        <option value="F">Feminino</option>
+        <option value="N">Não se identificar</option>
+      </select>
+
+    </div>
+
+
+    <!-- CEP -->
+    <div class="campo cep">
+
+      <label for="cep">CEP</label>
+
+      <input
+        type="text"
+        name="cep"
+        [(ngModel)]="cep"
+        id="cep"
+        required
+        maxlength="9"
+        placeholder="00000-000"
+        (input)="mascararCEP()"
+        #cepCampo="ngModel"
+      >
+
+      <div
+        class="mensagem-campo"
+        *ngIf="cepCampo.invalid && cepCampo.touched"
+      >
+        Informe seu CEP.
+      </div>
+
+      <div
+        class="mensagem-campo"
+        *ngIf="cep && cep.length < 9 && cepCampo.touched"
+      >
+        CEP incompleto.
+      </div>
+
+    </div>
+
+
+    <!-- RUA -->
+    <div class="campo rua">
+
+      <label for="rua-logradouro">
+        Rua / Logradouro
+      </label>
+
+      <input
+        type="text"
+        name="rua-logradouro"
+        [(ngModel)]="ruaLogradouro"
+        id="rua-logradouro"
+        required
+        maxlength="100"
+        placeholder="Rua / Avenida"
+        #ruaCampo="ngModel"
+      >
+
+      <div
+        class="mensagem-campo"
+        *ngIf="ruaCampo.invalid && ruaCampo.touched"
+      >
+        Informe a rua ou logradouro.
+      </div>
+
+    </div>
+
+
+    <!-- BAIRRO -->
+    <div class="campo bairro">
+
+      <label for="bairro">Bairro</label>
+
+      <input
+        type="text"
+        name="bairro"
+        [(ngModel)]="bairro"
+        id="bairro"
+        required
+        maxlength="60"
+        placeholder="Seu bairro"
+        #bairroCampo="ngModel"
+      >
+
+      <div
+        class="mensagem-campo"
+        *ngIf="bairroCampo.invalid && bairroCampo.touched"
+      >
+        Informe o bairro.
+      </div>
+
+    </div>
+
+
+    <!-- MUNICÍPIO -->
+    <div class="campo cidade">
+
+      <label for="cidade">Município</label>
+
+      <select
+        name="cidade"
+        id="cidade"
+        [(ngModel)]="cidade"
+        required
+        [disabled]="!uf"
+        #cidadeCampo="ngModel"
+      >
+
+        <option value="">
+          {{
+            uf
+              ? 'Selecione seu município'
+              : 'Selecione primeiro o estado'
+          }}
+        </option>
+
+        <option
+          *ngFor="let municipio of municipios"
+          [value]="municipio.nome"
+        >
+          {{ municipio.nome }}
+        </option>
+
+      </select>
+
+      <div
+        class="mensagem-campo"
+        *ngIf="cidadeCampo.invalid && cidadeCampo.touched"
+      >
+        Selecione seu município.
+      </div>
+
+    </div>
+
+
+    <!-- ESTADO -->
+    <div class="campo uf">
+
+      <label for="uf">UF</label>
+
+      <select
+        name="uf"
+        id="uf"
+        [(ngModel)]="uf"
+        (change)="carregarMunicipios()"
+        required
+        #ufCampo="ngModel"
+      >
+
+        <option value="">UF</option>
+
+        <option
+          *ngFor="let estado of estados"
+          [value]="estado.sigla"
+        >
+          {{ estado.sigla }}
+        </option>
+
+      </select>
+
+      <div
+        class="mensagem-campo"
+        *ngIf="ufCampo.invalid && ufCampo.touched"
+      >
+        Selecione seu estado.
+      </div>
+
+    </div>
+
+
+    <!-- BOTÕES -->
+    <div id="div-btns">
+
+      <button
+        type="submit"
+        id="btnAdd"
+      >
+        Cadastrar Atleta
+      </button>
+
+      <button
+        type="button"
+        id="btnLimpar"
+        (click)="limparAtributos()"
+      >
+        Limpar
+      </button>
+
+    </div>
+
+  </form>
+
+</div>

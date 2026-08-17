@@ -1,0 +1,34 @@
+<div id="div-list">
+  <h2>Listagem de Atletas</h2>
+
+  <div class="actions">
+    <a routerLink="/cadastroatleta" class="btn-novo">Novo Atleta</a>
+  </div>
+
+  <table class="tabela-atletas">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>CPF</th>
+        <th>Cidade/UF</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let atleta of atletas">
+        <td>{{ atleta.id }}</td>
+        <td>{{ atleta.nome }}</td>
+        <td>{{ atleta.cpf }}</td>
+        <td>{{ atleta.cidade }} - {{ atleta.uf }}</td>
+        <td>
+          <a [routerLink]="['/cadastroatleta', atleta.id]" class="btn-editar">Editar</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <div *ngIf="atletas.length === 0" class="mensagem-vazia">
+    Nenhum atleta cadastrado.
+  </div>
+</div>

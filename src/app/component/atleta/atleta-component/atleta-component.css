@@ -1,0 +1,451 @@
+/* =========================================
+   FUNDO DA PÁGINA
+========================================= */
+
+:host {
+    display: block;
+  
+    min-height: 100vh;
+  
+    padding: 40px 20px;
+  
+    box-sizing: border-box;
+  
+    background:
+      linear-gradient(
+        135deg,
+        #F3EEFA,
+        #EAE2F4
+      );
+  }
+  
+  
+  /* =========================================
+     CARD PRINCIPAL
+  ========================================= */
+  
+  #div-form {
+    width: 850px;
+  
+    max-width: 100%;
+  
+    margin: 0 auto;
+  
+    padding: 32px 35px;
+  
+    box-sizing: border-box;
+  
+    background-color: #FFFFFF;
+  
+    border: 1px solid #D7CBE5;
+  
+    border-radius: 16px;
+  
+    box-shadow:
+      0 10px 30px rgba(82, 48, 120, 0.12),
+      0 3px 10px rgba(82, 48, 120, 0.06);
+  }
+  
+  
+  /* =========================================
+     TÍTULO
+  ========================================= */
+  
+  h2 {
+    margin: 0 0 25px;
+  
+    padding-bottom: 15px;
+  
+    color: #6A1B9A;
+  
+    font-size: 24px;
+  
+    font-weight: 700;
+  
+    border-bottom: 2px solid #B39DDB;
+  }
+  
+  
+  /* =========================================
+     FORMULÁRIO
+  ========================================= */
+  
+  #form-atleta {
+    display: grid;
+  
+    grid-template-columns: 1fr 1fr 1fr;
+  
+    column-gap: 18px;
+  
+    row-gap: 18px;
+  }
+  
+  
+  /* =========================================
+     CAMPOS
+  ========================================= */
+  
+  .campo {
+    display: flex;
+  
+    flex-direction: column;
+  
+    min-width: 0;
+  }
+  
+  
+  /* =========================================
+     ORGANIZAÇÃO DOS CAMPOS
+  ========================================= */
+  
+  .campo.nome {
+    grid-column: 1 / 4;
+  }
+  
+  
+  .campo.cpf {
+    grid-column: 1 / 2;
+  }
+  
+  
+  .campo.sexo {
+    grid-column: 2 / 4;
+  }
+  
+  
+  .campo.cep {
+    grid-column: 1 / 2;
+  }
+  
+  
+  .campo.rua {
+    grid-column: 2 / 4;
+  }
+  
+  
+  .campo.bairro {
+    grid-column: 1 / 2;
+  }
+  
+  
+  .campo.cidade {
+    grid-column: 2 / 3;
+  }
+  
+  
+  .campo.uf {
+    grid-column: 3 / 4;
+  }
+  
+  
+  /* =========================================
+     LABEL
+  ========================================= */
+  
+  .campo > label {
+    margin-bottom: 7px;
+  
+    color: #6A1B9A;
+  
+    font-size: 13px;
+  
+    font-weight: 600;
+  }
+  
+  
+  /* =========================================
+     INPUTS E SELECTS
+  ========================================= */
+  
+  .campo input,
+  .campo select {
+    width: 100%;
+  
+    height: 44px;
+  
+    padding: 0 12px;
+  
+    box-sizing: border-box;
+  
+    color: #40364A;
+  
+    background-color: #F3EEFA;
+  
+    border: 1px solid #B39DDB;
+  
+    border-radius: 8px;
+  
+    outline: none;
+  
+    font-size: 13px;
+  
+    transition: 0.2s ease;
+  }
+  
+  
+  /* =========================================
+     HOVER
+  ========================================= */
+  
+  .campo input:hover,
+  .campo select:hover {
+    border-color: #6A1B9A;
+  
+    background-color: #EEE7F7;
+  }
+  
+  
+  /* =========================================
+     FOCO
+  ========================================= */
+  
+  .campo input:focus,
+  .campo select:focus {
+    border-color: #6A1B9A;
+  
+    background-color: #FFFFFF;
+  
+    box-shadow:
+      0 0 0 3px rgba(179, 157, 219, 0.30);
+  }
+  
+  
+  /* =========================================
+     PLACEHOLDER
+  ========================================= */
+  
+  .campo input::placeholder {
+    color: #8B8095;
+  }
+  
+  
+  /* =========================================
+     SELECT DESABILITADO
+  ========================================= */
+  
+  .campo select:disabled {
+    background-color: #E8DFEC;
+  
+    color: #8F8295;
+  
+    border-color: #D1C3D8;
+  
+    cursor: not-allowed;
+  }
+  
+  
+  /* =========================================
+     MENSAGEM DO CAMPO
+  ========================================= */
+  
+  .mensagem-campo {
+    margin-top: 5px;
+  
+    color: #91444D;
+  
+    font-size: 11px;
+  
+    font-weight: 500;
+  }
+  
+  
+  /* =========================================
+     MENSAGEM PRINCIPAL
+  ========================================= */
+  
+  .mensagem {
+    grid-column: 1 / 4;
+  
+    width: 100%;
+  
+    box-sizing: border-box;
+  
+    margin-bottom: 8px;
+  
+    padding: 12px 15px;
+  
+    border-radius: 8px;
+  
+    text-align: center;
+  
+    font-size: 13px;
+  
+    font-weight: 600;
+  }
+  
+  
+  /* =========================================
+     SUCESSO
+  ========================================= */
+  
+  .mensagem.sucesso {
+    color: #357044;
+  
+    background-color: #EAF5EC;
+  
+    border: 1px solid #B5D5BA;
+  }
+  
+  
+  /* =========================================
+     ERRO
+  ========================================= */
+  
+  .mensagem.erro {
+    color: #91444D;
+  
+    background-color: #FBEDEF;
+  
+    border: 1px solid #DEB5BA;
+  }
+  
+  
+  /* =========================================
+     BOTÕES
+  ========================================= */
+  
+  #div-btns {
+    grid-column: 1 / 4;
+  
+    display: flex;
+  
+    justify-content: flex-start;
+  
+    align-items: center;
+  
+    gap: 12px;
+  
+    margin-top: 12px;
+  }
+  
+  
+  #div-btns button {
+    height: 42px;
+  
+    padding: 0 25px;
+  
+    border: none;
+  
+    border-radius: 8px;
+  
+    font-size: 13px;
+  
+    font-weight: 700;
+  
+    cursor: pointer;
+  
+    transition: 0.2s ease;
+  }
+  
+  
+  /* =========================================
+     BOTÃO CADASTRAR
+  ========================================= */
+  
+  #btnAdd {
+    background-color: #6A1B9A;
+  
+    color: #FFFFFF;
+  
+    box-shadow:
+      0 4px 10px rgba(82, 48, 120, 0.20);
+  }
+  
+  
+  #btnAdd:hover {
+    background-color: #7B2AAE;
+  
+    transform: translateY(-2px);
+  
+    box-shadow:
+      0 6px 14px rgba(82, 48, 120, 0.25);
+  }
+  
+  
+  /* =========================================
+     BOTÃO LIMPAR
+  ========================================= */
+  
+  #btnLimpar {
+    background-color: #F3EEFA;
+  
+    color: #6A1B9A;
+  
+    border: 1px solid #B39DDB;
+  }
+  
+  
+  #btnLimpar:hover {
+    background-color: #E8E0F2;
+  
+    color: #6A1B9A;
+  
+    transform: translateY(-2px);
+  
+    box-shadow:
+      0 4px 9px rgba(82, 48, 120, 0.10);
+  }
+  
+  
+  /* =========================================
+     RESPONSIVIDADE
+  ========================================= */
+  
+  @media (max-width: 900px) {
+  
+    #div-form {
+      width: 95%;
+  
+      padding: 28px;
+    }
+  
+  }
+  
+  
+  @media (max-width: 650px) {
+  
+    #div-form {
+      width: 100%;
+  
+      padding: 22px 18px;
+    }
+  
+  
+    h2 {
+      font-size: 21px;
+    }
+  
+  
+    #form-atleta {
+      display: flex;
+  
+      flex-direction: column;
+  
+      gap: 15px;
+    }
+  
+  
+    .campo.nome,
+    .campo.cpf,
+    .campo.sexo,
+    .campo.cep,
+    .campo.rua,
+    .campo.bairro,
+    .campo.cidade,
+    .campo.uf {
+      width: 100%;
+    }
+  
+  
+    #div-btns {
+      flex-direction: column;
+  
+      align-items: stretch;
+    }
+  
+  
+    #div-btns button {
+      width: 100%;
+    }
+  
+  }
