@@ -20,6 +20,11 @@ export class AtletaService {
         return this.http.post<Atleta>(urlApi, atleta);
     }
 
+    excluirAtleta(id: number): Observable<Atleta> {
+        const urlApi = `https://6a7f6d923183f5fd884b1a61.mockapi.io/esportearlivre/atleta/${id}`;
+        return this.http.delete<Atleta>(urlApi);
+    }
+
     /*
     //DECLARANDO ARRAY atletas
     private atletas: Atleta[] = []

@@ -6,24 +6,24 @@ import { AtletaListComponent } from './component/atleta/atleta-list-component/at
 
 export const routes: Routes = [
     {
-        path: "",
-        redirectTo: "/home",
-        pathMatch: "full"
+        path:"",
+        redirectTo:"/home",
+        pathMatch:"full"
     },
     {
         path: "home",
         component: HomeComponent
     },
     {
-        path: "cadastroAtleta",
+        path:"cadastroAtleta",
         component: AtletaComponent,
     },
     {
-        path: "cadastroAtleta/id",
+        path:"cadastroAtleta/:id",
         component: AtletaComponent,
     },
     {
-        path: "listaAtleta",
+        path:"listaAtleta",
         component: AtletaListComponent,
     }
 ];

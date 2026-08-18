@@ -42,7 +42,7 @@ export class AtletaComponent {
     this.uf = '';
   }
 
-  salvar() {
+ enviarDadosAtleta() {
     const atleta = new Atleta();
     atleta.nome = this.nome;
     atleta.cpf = this.cpf;
