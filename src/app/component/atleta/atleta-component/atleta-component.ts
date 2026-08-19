@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectorRef } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import { AtletaService } from '../../../service/atleta-service';
 import { Atleta } from '../../../models/Atleta';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-atleta-component',
@@ -13,7 +14,10 @@ import { Atleta } from '../../../models/Atleta';
 })
 export class AtletaComponent {
 
+  // ==========================================
   // DECLARANDO ATRIBUTOS
+  // ==========================================
+
   nome = '';
   cpf = 0;
   sexo = '';
@@ -23,11 +27,26 @@ export class AtletaComponent {
   cidade = '';
   uf = '';
 
-  // DECLARAÇÃO DO CONSTRUTOR
-  constructor(private atletaService: AtletaService) {}
+  idAtleta = 0;
 
+
+  // ==========================================
+  // DECLARAÇÃO DO CONSTRUTOR
+  // ==========================================
+
+  constructor(
+    private atletaService: AtletaService,
+    private route: ActivatedRoute,
+    private cdr: ChangeDetectorRef
+  ) {}
+
+
+  // ==========================================
   // DECLARAÇÃO DE FUNÇÕES
+  // ==========================================
+
   exibirDados() {
+
     console.log(
       this.nome,
       this.cpf,
@@ -42,7 +61,29 @@ export class AtletaComponent {
     this.limparDados();
   }
 
+
+  // ==========================================
+  // INICIALIZAÇÃO
+  // ==========================================
+
+  ngOnInit() {
+
+    this.idAtleta = Number(
+      this.route.snapshot.paramMap.get('id')
+    );
+
+    if (this.idAtleta > 0) {
+      this.carregarDados(this.idAtleta);
+    }
+  }
+
+
+  // ==========================================
+  // LIMPAR DADOS
+  // ==========================================
+
   limparDados() {
+
     this.nome = '';
     this.cpf = 0;
     this.sexo = '';
@@ -53,10 +94,18 @@ export class AtletaComponent {
     this.uf = '';
   }
 
-  carregaDados(idAtleta: number) {
+
+  // ==========================================
+  // CARREGAR DADOS DO ATLETA
+  // ==========================================
+
+  carregarDados(idAtleta: number) {
+
     this.atletaService.listarAtleta(idAtleta)
       .subscribe({
+
         next: (dadosAtleta) => {
+
           this.nome = dadosAtleta.nome;
           this.cpf = dadosAtleta.cpf;
           this.sexo = dadosAtleta.sexo;
@@ -65,16 +114,28 @@ export class AtletaComponent {
           this.bairro = dadosAtleta.bairro;
           this.cidade = dadosAtleta.cidade;
           this.uf = dadosAtleta.uf;
+
+          // EXECUTA A DETECÇÃO DE ALTERAÇÃO MANUALMENTE
+          this.cdr.detectChanges();
         },
+
         error: (msgErro) => {
-          console.log('ERRO AO LISTAR ATLETA', msgErro);
+
+          console.log(
+            'ERRO AO LISTAR ATLETA',
+            msgErro
+          );
         }
       });
   }
-  
 
+
+  // ==========================================
+  // ENVIAR DADOS DO ATLETA
+  // ==========================================
 
   enviarDadosAtleta() {
+
     const atleta = new Atleta();
 
     atleta.nome = this.nome;
@@ -86,15 +147,21 @@ export class AtletaComponent {
     atleta.cidade = this.cidade;
     atleta.uf = this.uf;
 
+
     this.atletaService.salvarAtleta(atleta)
       .subscribe({
+
         next: (resposta) => {
+
           console.log(resposta);
         },
+
         error: (msgErro) => {
+
           console.log(msgErro);
         }
       });
+
 
     this.limparDados();
 
