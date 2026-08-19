@@ -15,7 +15,9 @@ export class AtletaListComponent {
   //listaAtletas: Atleta[] = []
   listaAtletas = signal<Atleta[]>([]);
 
-  constructor(private listaService: AtletaService, private router: Router) { }
+  constructor(
+    private listaService: AtletaService,
+     private router: Router) { }
 
   ngOnInit(){
     this.listar()
