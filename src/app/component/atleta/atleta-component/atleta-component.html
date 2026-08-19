@@ -1,165 +1,215 @@
 <section id="form">
-    <h2>Cadastro de Atleta</h2>
-  
-    <form id="form-atleta" (submit)="enviarDadosAtleta()">
-  
-      <!-- NOME -->
-      <div class="campo campo-nome">
-        <label for="nome">Nome Completo*</label>
+
+  <h2> {{ !editar ? 'Cadastro' : 'Alterar'}} Atleta </h2>
+
+  <form id="form-atleta" (ngSubmit)="enviarDadosAtleta()">
+
+
+    <div class="campo campo-nome">
+
+      <label for="nome">Nome Completo*</label>
+
+      <input
+        type="text"
+        name="nome"
+        id="nome"
+        [(ngModel)]="nome"
+        maxlength="60"
+        required
+        placeholder="Digite o nome Completo"
+      >
+
+    </div>
+
+
+
+    <div class="linha">
+
+      <div class="campo cpf">
+
+        <label for="cpf">CPF*</label>
+
         <input
           type="text"
-          name="nome"
-          id="nome"
-          [(ngModel)]="nome"
+          name="cpf"
+          [(ngModel)]="cpf"
+          id="cpf"
+          maxlength="14"
+          required
+          placeholder="Digite o CPF"
+        >
+
+      </div>
+
+
+      <div class="campo sexo">
+
+        <label>Sexo</label>
+
+        <div class="opcoes-sexo">
+
+          <label class="radio-label">
+
+            <input
+              type="radio"
+              name="sexo"
+              [(ngModel)]="sexo"
+              value="M"
+              required
+            >
+
+            Masculino
+
+          </label>
+
+
+          <label class="radio-label">
+
+            <input
+              type="radio"
+              name="sexo"
+              [(ngModel)]="sexo"
+              value="F"
+            >
+
+            Feminino
+
+          </label>
+
+
+          <label class="radio-label">
+
+            <input
+              type="radio"
+              name="sexo"
+              [(ngModel)]="sexo"
+              value="N"
+            >
+
+            Não Declarar
+
+          </label>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+
+    <div class="campo campo-cep">
+
+      <label for="cep">CEP*</label>
+
+      <input
+        type="text"
+        name="cep"
+        [(ngModel)]="cep"
+        id="cep"
+        maxlength="9"
+        required
+        placeholder="Digite o CEP"
+      >
+
+    </div>
+
+
+
+    <div class="linha endereco">
+
+      <div class="campo rua">
+
+        <label for="rua-logradouro">
+          Rua/Logradouro*
+        </label>
+
+        <input
+          type="text"
+          name="rua-logradouro"
+          [(ngModel)]="ruaLogradouro"
+          id="rua-logradouro"
+          maxlength="100"
+          required
+          placeholder="Digite a Rua ou o Logradouro"
+        >
+
+      </div>
+
+
+      <div class="campo bairro">
+
+        <label for="bairro">Bairro*</label>
+
+        <input
+          type="text"
+          name="bairro"
+          [(ngModel)]="bairro"
+          id="bairro"
           maxlength="60"
           required
-          placeholder="Digite o nome Completo"
+          placeholder="Digite o bairro"
         >
+
       </div>
-  
-      <!-- CPF + SEXO -->
-      <div class="linha">
-  
-        <div class="campo cpf">
-          <label for="cpf">CPF*</label>
-          <input
-            type="text"
-            name="cpf"
-            [(ngModel)]="cpf"
-            id="cpf"
-            maxlength="14"
-            required
-            placeholder="Digite o CPF"
-          >
-        </div>
-  
-        <div class="campo sexo">
-          <label>Sexo</label>
-  
-          <div class="opcoes-sexo">
-  
-            <label class="radio-label">
-              <input
-                type="radio"
-                name="sexo"
-                [(ngModel)]="sexo"
-                value="M"
-                required
-              >
-              Masculino
-            </label>
-  
-            <label class="radio-label">
-              <input
-                type="radio"
-                name="sexo"
-                [(ngModel)]="sexo"
-                value="F"
-              >
-              Feminino
-            </label>
-  
-            <label class="radio-label">
-              <input
-                type="radio"
-                name="sexo"
-                [(ngModel)]="sexo"
-                value="N"
-              >
-              Não Declarar
-            </label>
-  
-          </div>
-        </div>
-  
-      </div>
-  
-      <!-- CEP -->
-      <div class="campo campo-cep">
-        <label for="cep">CEP*</label>
+
+
+      <div class="campo cidade">
+
+        <label for="cidade">Cidade*</label>
+
         <input
           type="text"
-          name="cep"
-          [(ngModel)]="cep"
-          id="cep"
-          maxlength="9"
+          name="cidade"
+          [(ngModel)]="cidade"
+          id="cidade"
+          maxlength="60"
           required
-          placeholder="Digite o CEP"
+          placeholder="Digite a cidade"
         >
+
       </div>
-  
-      <!-- ENDEREÇO -->
-      <div class="linha endereco">
-  
-        <div class="campo rua">
-          <label for="rua-logradouro">Rua/Logradouro*</label>
-          <input
-            type="text"
-            name="rua-logradouro"
-            [(ngModel)]="ruaLogradouro"
-            id="rua-logradouro"
-            maxlength="100"
-            required
-            placeholder="Digite a Rua ou o Logradouro"
-          >
-        </div>
-  
-        <div class="campo bairro">
-          <label for="bairro">Bairro*</label>
-          <input
-            type="text"
-            name="bairro"
-            [(ngModel)]="bairro"
-            id="bairro"
-            maxlength="60"
-            required
-            placeholder="Digite o bairro"
-          >
-        </div>
-  
-        <div class="campo cidade">
-          <label for="cidade">Cidade*</label>
-          <input
-            type="text"
-            name="cidade"
-            [(ngModel)]="cidade"
-            id="cidade"
-            maxlength="60"
-            required
-            placeholder="Digite a cidade"
-          >
-        </div>
-  
-        <div class="campo uf">
-          <label for="uf">UF*</label>
-          <input
-            type="text"
-            name="uf"
-            [(ngModel)]="uf"
-            id="uf"
-            maxlength="2"
-            required
-            placeholder="UF"
-          >
-        </div>
-  
-      </div>
-  
-      <!-- BOTÕES -->
-      <div id="div-btns">
-        <button type="submit" id="btnAdd">
-          Cadastrar
-        </button>
-  
-        <button
-          type="button"
-          id="btnLimpar"
-          (click)="limparDados()"
+
+
+      <div class="campo uf">
+
+        <label for="uf">UF*</label>
+
+        <input
+          type="text"
+          name="uf"
+          [(ngModel)]="uf"
+          id="uf"
+          maxlength="2"
+          required
+          placeholder="Digite a UF"
         >
-          Limpar
-        </button>
+
       </div>
-  
-    </form>
-  </section>
-  
+
+    </div>
+
+
+    <div id="div-btns">
+
+      <button
+        type="submit"
+        id="btnAdd"
+      >
+        {{ !editar ? 'Cadastrar' : 'Alterar' }}
+      </button>
+
+
+      <button
+        type="button"
+        id="btnLimpar"
+        (click)="limparDados()"
+      >
+        Limpar
+      </button>
+
+    </div>
+
+  </form>
+
+</section>
