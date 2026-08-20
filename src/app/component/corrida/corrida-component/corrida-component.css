@@ -1,0 +1,322 @@
+/* =========================================
+   FUNDO E CONTAINER
+========================================= */
+
+:host {
+  display: block;
+  min-height: 100vh;
+  padding: 30px 20px;
+  box-sizing: border-box;
+  background: linear-gradient(135deg, #F3EEFA, #EAE2F4);
+}
+
+#form-corrida {
+  width: 950px;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 35px 40px;
+  box-sizing: border-box;
+
+  background-color: #FFFFFF;
+
+  border: 1px solid #D7CBE5;
+  border-radius: 16px;
+
+  box-shadow:
+    0 10px 30px rgba(82, 48, 120, 0.12),
+    0 3px 10px rgba(82, 48, 120, 0.06);
+
+  color: #56008C;
+}
+
+
+/* =========================================
+   TÍTULO
+========================================= */
+
+#form-corrida h2 {
+  margin: 0 0 30px;
+  padding-bottom: 15px;
+
+  color: #56008C;
+
+  font-size: 24px;
+  font-weight: 700;
+
+  border-bottom: 2px solid #B39DDB;
+
+  text-transform: uppercase;
+}
+
+
+/* =========================================
+   FORMULÁRIO
+========================================= */
+
+#form-dados-corrida {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 20px;
+
+  font-size: 15px;
+}
+
+
+/* =========================================
+   CAMPOS
+========================================= */
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.campo label {
+  margin: 0;
+
+  color: #56008C;
+
+  font-size: 14px;
+  font-weight: 600;
+}
+
+
+/* =========================================
+   TEXTAREA DESCRIÇÃO
+========================================= */
+
+textarea {
+  width: 100%;
+  height: 130px;
+
+  padding: 12px 14px;
+
+  box-sizing: border-box;
+
+  resize: none;
+
+  color: #40364A;
+  background-color: #F3EEFA;
+
+  border: 1px solid #B39DDB;
+  border-radius: 8px;
+
+  outline: none;
+
+  font-size: 14px;
+
+  transition: all 0.2s ease;
+}
+
+textarea:hover {
+  border-color: #56008C;
+  background-color: #EEE7F7;
+}
+
+textarea:focus {
+  border-color: #56008C;
+  background-color: #FFFFFF;
+
+  box-shadow: 0 0 0 3px rgba(179, 157, 219, 0.35);
+}
+
+
+/* =========================================
+   INPUT DATE
+========================================= */
+
+input[type="date"] {
+  width: 280px;
+  height: 44px;
+
+  padding: 0 14px;
+
+  box-sizing: border-box;
+
+  color: #40364A;
+  background-color: #F3EEFA;
+
+  border: 1px solid #B39DDB;
+  border-radius: 8px;
+
+  outline: none;
+
+  font-size: 14px;
+
+  transition: all 0.2s ease;
+}
+
+input[type="date"]:hover {
+  border-color: #56008C;
+  background-color: #EEE7F7;
+}
+
+input[type="date"]:focus {
+  border-color: #56008C;
+  background-color: #FFFFFF;
+
+  box-shadow: 0 0 0 3px rgba(179, 157, 219, 0.35);
+}
+
+
+/* =========================================
+   CHECKBOXES DE DISTÂNCIA
+========================================= */
+
+.opcoes-distancia {
+  display: flex;
+  align-items: center;
+
+  gap: 30px;
+
+  min-height: 44px;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  margin: 0;
+
+  color: #40364A;
+
+  font-size: 14px;
+  font-weight: 500;
+
+  cursor: pointer;
+}
+
+input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+
+  margin: 0;
+
+  accent-color: #56008C;
+
+  cursor: pointer;
+}
+
+
+/* =========================================
+   BOTÕES
+========================================= */
+
+#div-btns {
+  display: flex;
+  align-items: center;
+
+  gap: 15px;
+
+  margin-top: 5px;
+}
+
+button {
+  height: 44px;
+
+  padding: 0 28px;
+
+  cursor: pointer;
+
+  border-radius: 8px;
+
+  font-family: inherit;
+
+  font-size: 14px;
+  font-weight: 700;
+
+  transition: all 0.2s ease;
+}
+
+
+/* =========================================
+   CADASTRAR
+========================================= */
+
+#btnAdd {
+  border: none;
+
+  background-color: #56008C;
+
+  color: #FFFFFF;
+
+  box-shadow: 0 4px 10px rgba(82, 48, 120, 0.20);
+}
+
+#btnAdd:hover {
+  background-color: #7B2AAE;
+
+  transform: translateY(-2px);
+
+  box-shadow: 0 6px 15px rgba(82, 48, 120, 0.28);
+}
+
+
+/* =========================================
+   LIMPAR
+========================================= */
+
+#btnLimpar {
+  background-color: #F3EEFA;
+
+  color: #56008C;
+
+  border: 1px solid #B39DDB;
+}
+
+#btnLimpar:hover {
+  background-color: #E8E0F2;
+
+  transform: translateY(-2px);
+
+  box-shadow: 0 4px 9px rgba(82, 48, 120, 0.10);
+}
+
+
+/* =========================================
+   RESPONSIVIDADE
+========================================= */
+
+@media (max-width: 800px) {
+
+  :host {
+    padding: 20px 10px;
+  }
+
+  #form-corrida {
+    padding: 25px 20px;
+  }
+
+  .opcoes-distancia {
+    flex-wrap: wrap;
+    gap: 15px;
+    min-height: auto;
+  }
+
+  input[type="date"] {
+    width: 100%;
+  }
+}
+
+
+@media (max-width: 500px) {
+
+  #form-corrida h2 {
+    font-size: 20px;
+  }
+
+  #div-btns {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  #div-btns button {
+    width: 100%;
+  }
+}

@@ -1,0 +1,26 @@
+<section id="section-lista-corrida">
+
+  <h2>Lista Corridas</h2>
+
+  @for (elem of listaCorridas(); track elem.id) {
+    <div class="corrida-item">
+      <span class="span-dados-corrida">
+        {{ elem.descricao_corrida }} — {{ elem.data_corrida }}
+        <span style="margin-left: 8px; color: #7B2AAE; font-size: 13px;">
+          {{ elem.distancia5km ? '5km' : '' }}
+          {{ elem.distancia10km ? ' 10km' : '' }}
+          {{ elem.distancia25km ? ' 25km' : '' }}
+        </span>
+      </span>
+      <span class="span-lnk-corridas">
+        <a class="lnk-corrida lnk-editar">Editar</a>
+        <a class="lnk-corrida lnk-excluir" (click)="excluir(elem)">Excluir</a>
+      </span>
+    </div>
+  } @empty {
+    <div class="corrida-item">
+      NENHUM REGISTRO NA LISTA
+    </div>
+  }
+
+</section>

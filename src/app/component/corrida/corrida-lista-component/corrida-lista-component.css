@@ -1,0 +1,292 @@
+/* =========================================
+   FUNDO E CONTAINER DA LISTA
+========================================= */
+
+:host {
+  display: block;
+
+  min-height: 100vh;
+
+  padding: 30px 20px;
+
+  box-sizing: border-box;
+
+  background: linear-gradient(
+      135deg,
+      #F3EEFA,
+      #EAE2F4
+  );
+}
+
+
+/* =========================================
+ CONTAINER
+========================================= */
+
+#section-lista-corrida {
+
+  width: 950px;
+
+  max-width: 100%;
+
+  min-height: 550px;
+
+  margin: 0 auto;
+
+  padding: 35px 40px;
+
+  box-sizing: border-box;
+
+  background-color: #FFFFFF;
+
+  border: 1px solid var(--cor-borda, #D7CBE5);
+
+  border-radius: 16px;
+
+  box-shadow:
+      0 10px 30px rgba(82, 48, 120, 0.12),
+      0 3px 10px rgba(82, 48, 120, 0.06);
+
+  color: #40364A;
+
+  font-size: 15px;
+}
+
+
+/* =========================================
+ TÍTULO
+========================================= */
+
+#section-lista-corrida h2 {
+
+  margin: 0 0 25px;
+
+  padding-bottom: 15px;
+
+  color: var(--cor-primaria, #56008C);
+
+  font-size: 24px;
+
+  font-weight: 700;
+
+  border-bottom: 2px solid var(--cor-borda, #B39DDB);
+
+  text-transform: uppercase;
+}
+
+
+/* =========================================
+ CAIXA DE CADA CORRIDA
+========================================= */
+
+.corrida-item {
+
+  width: 100%;
+
+  min-height: 55px;
+
+  padding: 12px 18px;
+
+  margin: 8px 0;
+
+  box-sizing: border-box;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  background-color: #F3EEFA;
+
+  border: 1px solid #D7CBE5;
+
+  border-radius: 8px;
+
+  box-shadow:
+      0 2px 6px rgba(82, 48, 120, 0.06);
+
+  transition: all 0.2s ease;
+}
+
+
+/* =========================================
+ EFEITO AO PASSAR O MOUSE
+========================================= */
+
+.corrida-item:hover {
+
+  background-color: #E8DDF2;
+
+  border-color: #B39DDB;
+
+  transform: translateY(-2px);
+
+  box-shadow:
+      0 5px 12px rgba(82, 48, 120, 0.10);
+}
+
+
+/* =========================================
+ DADOS DA CORRIDA
+========================================= */
+
+.span-dados-corrida {
+
+  width: 85%;
+
+  height: 100%;
+
+  display: flex;
+
+  align-items: center;
+
+  color: #40364A;
+
+  font-size: 15px;
+}
+
+
+/* =========================================
+ ÁREA DOS LINKS
+========================================= */
+
+.span-lnk-corridas {
+
+  width: 15%;
+
+  height: 100%;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 10px;
+}
+
+
+/* =========================================
+ LINKS
+========================================= */
+
+.lnk-corrida {
+
+  padding: 6px 10px;
+
+  text-decoration: none;
+
+  cursor: pointer;
+
+  border-radius: 6px;
+
+  font-size: 14px;
+
+  font-weight: 700;
+
+  transition: all 0.2s ease;
+}
+
+
+/* =========================================
+ EDITAR
+========================================= */
+
+.lnk-editar {
+
+  color: #56008C;
+}
+
+
+.lnk-editar:hover {
+
+  background-color: #EEE7F7;
+
+  color: #7B2AAE;
+
+  transform: translateY(-1px);
+}
+
+
+/* =========================================
+ EXCLUIR
+========================================= */
+
+.lnk-excluir {
+
+  color: #C62828;
+}
+
+
+.lnk-excluir:hover {
+
+  background-color: #FDEAEA;
+
+  color: #A51F1F;
+
+  transform: translateY(-1px);
+}
+
+
+/* =========================================
+ ÚLTIMA LINHA
+========================================= */
+
+.corrida-item:last-child {
+
+  border-radius: 8px;
+}
+
+
+/* =========================================
+ RESPONSIVIDADE
+========================================= */
+
+@media (max-width: 750px) {
+
+  :host {
+
+      padding: 20px 12px;
+  }
+
+
+  #section-lista-corrida {
+
+      width: 100%;
+
+      padding: 25px 20px;
+  }
+
+
+  .corrida-item {
+
+      flex-direction: column;
+
+      align-items: flex-start;
+
+      gap: 12px;
+
+      padding: 15px;
+  }
+
+
+  .span-dados-corrida {
+
+      width: 100%;
+  }
+
+
+  .span-lnk-corridas {
+
+      width: 100%;
+
+      justify-content: flex-start;
+  }
+
+
+  .lnk-corrida {
+
+      padding: 7px 12px;
+  }
+}
