@@ -5,15 +5,14 @@ import { ActivatedRoute } from '@angular/router';
 import { AtletaService } from '../../../service/atleta-service';
 import { Atleta } from '../../../models/Atleta';
 
-
 @Component({
   selector: 'app-atleta-component',
+  standalone: true,
   imports: [FormsModule],
   templateUrl: './atleta-component.html',
   styleUrl: './atleta-component.css',
 })
 export class AtletaComponent {
-  //DECLARANDO ATIBUTOS
   nome = ''
   cpf = 0
   sexo = ''
@@ -26,16 +25,23 @@ export class AtletaComponent {
   idAtleta = 0
   editar = false
 
-  //DECLARAÇÃO DO CONSTRUTOR
   constructor(
     private atletaService: AtletaService,
     private http: ActivatedRoute,
     private cdr: ChangeDetectorRef
   ) { }
 
-  //DECLARAÇÃO DE FUNÇÕES
   exibirDados() {
-    console.log(this.nome, this.cpf, this.sexo, this.cep, this.ruaLogradouro, this.bairro, this.cidade, this.uf)
+    console.log(
+      this.nome,
+      this.cpf,
+      this.sexo,
+      this.cep,
+      this.ruaLogradouro,
+      this.bairro,
+      this.cidade,
+      this.uf
+    )
 
     this.limparDados()
   }
@@ -73,7 +79,6 @@ export class AtletaComponent {
           this.cidade = dadosAtleta.cidade
           this.uf = dadosAtleta.uf
 
-          //EXECUTA A DETECÇÃO DE ALTERAÇÃO MANUALMENTE
           this.cdr.detectChanges()
         },
         error: (msgErro) => {
@@ -84,6 +89,7 @@ export class AtletaComponent {
 
   enviarDadosAtleta() {
     const atleta = new Atleta()
+
     atleta.nome = this.nome
     atleta.cpf = this.cpf
     atleta.sexo = this.sexo
@@ -95,7 +101,7 @@ export class AtletaComponent {
 
     if (this.editar) {
       atleta.id = this.idAtleta
-      
+
       this.atletaService.alterarAtleta(atleta)
         .subscribe({
           next: (resposta) => {
@@ -118,12 +124,7 @@ export class AtletaComponent {
         })
     }
 
-
     this.limparDados()
-
     this.atletaService.listarAtletas()
-
   }
-
-
 }

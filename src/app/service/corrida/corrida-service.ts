@@ -7,59 +7,70 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class CorridaService {
+
   constructor(private http: HttpClient) { }
 
-  //SALVAR A CORRIDA
+  // SALVAR CORRIDA
   salvarCorrida(corrida: Corrida) {
-    const urlAPi = `https://6a7f6d923183f5fd884b1a61.mockapi.io/esportearlivre/corrida`
 
-    this.http.post<Corrida>(urlAPi, corrida)
+    const urlApi =
+      'https://6a7f6d923183f5fd884b1a61.mockapi.io/esportearlivre/corrida';
+
+    this.http.post<Corrida>(urlApi, corrida)
       .subscribe({
         next: (respostaAPI) => {
-          return respostaAPI
+          console.log('Corrida salva com sucesso:', respostaAPI);
         },
+
         error: (msgErro) => {
-          return msgErro
+          console.log('Erro ao salvar corrida:', msgErro);
         }
-      })
+      });
   }
 
-  //LISTAR TODAS AS CORRIDAS
+  // LISTAR TODAS AS CORRIDAS
   listarCorridas(): Observable<Corrida[]> {
-    const urlAPi = `https://6a7f6d923183f5fd884b1a61.mockapi.io/esportearlivre/corrida`
 
-    return this.http.get<Corrida[]>(urlAPi)
+    const urlApi =
+      'https://6a7f6d923183f5fd884b1a61.mockapi.io/esportearlivre/corrida';
 
+    return this.http.get<Corrida[]>(urlApi);
   }
 
-  //LISTAR UMA CORRIDA
-  listarCorrida(idCorrida: Number): Observable<Corrida> {
-    const urlAPi = `https://6a7f6d923183f5fd884b1a61.mockapi.io/esportearlivre/corrida/${idCorrida}`
+  // LISTAR UMA CORRIDA
+  listarCorrida(idCorrida: number): Observable<Corrida> {
 
-    return this.http.get<Corrida>(urlAPi)
+    const urlApi =
+      `https://6a7f6d923183f5fd884b1a61.mockapi.io/esportearlivre/corrida/${idCorrida}`;
 
+    return this.http.get<Corrida>(urlApi);
   }
 
-  //EXCLUIR UMA CORRIDA
-  excluirCorrida(idCorrida: Number): Observable<Corrida> {
-    const urlAPi = `https://6a7f6d923183f5fd884b1a61.mockapi.io/esportearlivre/corrida/${idCorrida}`
+  // EXCLUIR CORRIDA
+  excluirCorrida(idCorrida: number): Observable<Corrida> {
 
-    return this.http.delete<Corrida>(urlAPi)
+    const urlApi =
+      `https://6a7f6d923183f5fd884b1a61.mockapi.io/esportearlivre/corrida/${idCorrida}`;
+
+    return this.http.delete<Corrida>(urlApi);
   }
 
-  //ALTERAR CORRIDA
+  // ALTERAR CORRIDA
   alterarCorrida(corrida: Corrida) {
-    const urlAPi = `https://6a7f6d923183f5fd884b1a61.mockapi.io/esportearlivre/corrida/${corrida.id}`
 
-    this.http.put<Corrida>(urlAPi, corrida)
+    const urlApi =
+      `https://6a7f6d923183f5fd884b1a61.mockapi.io/esportearlivre/corrida/${corrida.id}`;
+
+    this.http.put<Corrida>(urlApi, corrida)
       .subscribe({
-        next: (repostaAPI) => {
-          return repostaAPI
+        next: (respostaAPI) => {
+          console.log('Corrida alterada com sucesso:', respostaAPI);
         },
+
         error: (msgErro) => {
-          return msgErro
+          console.log('Erro ao alterar corrida:', msgErro);
         }
-      })
+      });
   }
 
 }

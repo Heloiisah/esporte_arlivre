@@ -1,22 +1,38 @@
 <section id="form-corrida">
 
-  <h2>Cadastro Corrida</h2>
+  <h2>
+    {{ editar ? 'Editar Corrida' : 'Cadastro Corrida' }}
+  </h2>
 
-  <form id="form-dados-corrida" (submit)="dadosFormulario()">
+  <form
+    id="form-dados-corrida"
+    (ngSubmit)="dadosFormulario()"
+  >
 
     <div class="campo">
-      <label for="corrida">Descrição da Corrida</label>
+
+      <label for="corrida">
+        Descrição da Corrida
+      </label>
+
       <textarea
         name="corrida"
         [(ngModel)]="descricao_corrida"
         id="corrida"
         placeholder="Descreva a corrida"
         maxlength="300"
+        required
       ></textarea>
+
     </div>
 
+
     <div class="campo">
-      <label for="data_corrida">Data da Corrida</label>
+
+      <label for="data_corrida">
+        Data da Corrida
+      </label>
+
       <input
         type="date"
         name="data_corrida"
@@ -24,48 +40,82 @@
         id="data_corrida"
         required
       >
+
     </div>
 
+
     <div class="campo">
-      <label>Distâncias Disponíveis</label>
+
+      <label>
+        Distâncias Disponíveis
+      </label>
+
       <div class="opcoes-distancia">
 
         <label class="checkbox-label">
+
           <input
             type="checkbox"
             name="distancia5km"
             [(ngModel)]="distancia5km"
             id="distancia5km"
           >
+
           5 Km
+
         </label>
 
+
         <label class="checkbox-label">
+
           <input
             type="checkbox"
             name="distancia10km"
             [(ngModel)]="distancia10km"
             id="distancia10km"
           >
+
           10 Km
+
         </label>
 
+
         <label class="checkbox-label">
+
           <input
             type="checkbox"
             name="distancia25km"
             [(ngModel)]="distancia25km"
             id="distancia25km"
           >
+
           25 Km
+
         </label>
 
       </div>
+
     </div>
 
+
     <div id="div-btns">
-      <button type="submit" id="btnAdd">Cadastrar Corrida</button>
-      <button type="reset" id="btnLimpar">Limpar</button>
+
+      <button
+        type="submit"
+        id="btnAdd"
+      >
+        {{ editar ? 'Alterar Corrida' : 'Cadastrar Corrida' }}
+      </button>
+
+
+      <button
+        type="button"
+        id="btnLimpar"
+        (click)="limparAtributos()"
+      >
+        Limpar
+      </button>
+
     </div>
 
   </form>
