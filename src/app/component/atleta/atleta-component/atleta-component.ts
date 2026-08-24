@@ -14,6 +14,7 @@ import { Atleta } from '../../../models/Atleta';
 })
 export class AtletaComponent {
   nome = ''
+  dataNascimento = ''
   cpf = 0
   sexo = ''
   cep = 0
@@ -34,6 +35,7 @@ export class AtletaComponent {
   exibirDados() {
     console.log(
       this.nome,
+      this.dataNascimento,
       this.cpf,
       this.sexo,
       this.cep,
@@ -57,6 +59,7 @@ export class AtletaComponent {
 
   limparDados() {
     this.nome = ''
+    this.dataNascimento = ''
     this.cpf = 0
     this.sexo = ''
     this.cep = 0
@@ -71,6 +74,7 @@ export class AtletaComponent {
       .subscribe({
         next: (dadosAtleta) => {
           this.nome = dadosAtleta.nome
+          this.dataNascimento = dadosAtleta.dataNascimento
           this.cpf = dadosAtleta.cpf
           this.sexo = dadosAtleta.sexo
           this.cep = dadosAtleta.cep
@@ -91,6 +95,7 @@ export class AtletaComponent {
     const atleta = new Atleta()
 
     atleta.nome = this.nome
+    atleta.dataNascimento = this.dataNascimento
     atleta.cpf = this.cpf
     atleta.sexo = this.sexo
     atleta.cep = this.cep

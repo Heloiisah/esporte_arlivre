@@ -89,7 +89,8 @@
    INPUTS
 ========================================= */
 
-input[type="text"] {
+input[type="text"],
+input[type="date"] {
   width: 100%;
   height: 44px;
 
@@ -110,17 +111,32 @@ input[type="text"] {
   transition: all 0.2s ease;
 }
 
-input[type="text"]:hover {
+input[type="text"]:hover,
+input[type="date"]:hover {
   border-color: #56008C;
   background-color: #EEE7F7;
 }
 
-input[type="text"]:focus {
+input[type="text"]:focus,
+input[type="date"]:focus {
   border-color: #56008C;
   background-color: #FFFFFF;
 
   box-shadow:
     0 0 0 3px rgba(179, 157, 219, 0.35);
+}
+
+
+/* =========================================
+   DATA DE NASCIMENTO
+========================================= */
+
+.campo-data-nascimento {
+  width: 45%;
+}
+
+input[type="date"] {
+  cursor: pointer;
 }
 
 
@@ -337,7 +353,8 @@ button {
 
   .cpf,
   .sexo,
-  .campo-cep {
+  .campo-cep,
+  .campo-data-nascimento {
     width: 100%;
   }
 
