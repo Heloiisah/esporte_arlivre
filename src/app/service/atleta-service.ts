@@ -11,9 +11,9 @@ export class AtletaService {
   constructor(private http: HttpClient) { }
 
 
-  // ==========================================
+  // 
   // LISTAR TODOS OS ATLETAS
-  // ==========================================
+  // 
 
   listarAtletas(): Observable<Atleta[]> {
 
@@ -23,9 +23,9 @@ export class AtletaService {
   }
 
 
-  // ==========================================
+  // 
   // LISTAR UM ATLETA
-  // ==========================================
+  // 
 
   listarAtleta(id: number): Observable<Atleta> {
 
@@ -35,9 +35,9 @@ export class AtletaService {
   }
 
 
-  // ==========================================
+  // 
   // SALVAR ATLETA
-  // ==========================================
+  // 
 
   salvarAtleta(atleta: Atleta): Observable<Atleta> {
 
@@ -47,9 +47,9 @@ export class AtletaService {
   }
 
 
-  // ==========================================
+  // 
   // ALTERAR ATLETA
-  // ==========================================
+  // 
 
   alterarAtleta(atleta: Atleta): Observable<Atleta> {
 
@@ -59,9 +59,9 @@ export class AtletaService {
   }
 
 
-  // ==========================================
+  // 
   // EXCLUIR ATLETA
-  // ==========================================
+  // 
 
   excluirAtleta(id: number): Observable<Atleta> {
 
