@@ -13,6 +13,7 @@ import { Atleta } from '../../../models/Atleta';
   styleUrl: './atleta-component.css',
 })
 export class AtletaComponent {
+
   nome = ''
   dataNascimento = ''
   cpf = 0
@@ -33,6 +34,7 @@ export class AtletaComponent {
   ) { }
 
   exibirDados() {
+
     console.log(
       this.nome,
       this.dataNascimento,
@@ -49,15 +51,23 @@ export class AtletaComponent {
   }
 
   ngOnInit() {
-    this.idAtleta = Number(this.http.snapshot.paramMap.get('id'))
+
+    this.idAtleta = Number(
+      this.http.snapshot.paramMap.get('id')
+    )
 
     if (this.idAtleta > 0) {
+
       this.editar = true
+
       this.carregaDados(this.idAtleta)
+
     }
+
   }
 
   limparDados() {
+
     this.nome = ''
     this.dataNascimento = ''
     this.cpf = 0
@@ -67,14 +77,21 @@ export class AtletaComponent {
     this.bairro = ''
     this.cidade = ''
     this.uf = ''
+
   }
 
   carregaDados(idAtleta: number) {
+
     this.atletaService.listarAtleta(idAtleta)
       .subscribe({
+
         next: (dadosAtleta) => {
+
           this.nome = dadosAtleta.nome
-          this.dataNascimento = dadosAtleta.dataNascimento
+
+          // CORRIGIDO
+          this.dataNascimento = dadosAtleta.data_nascimento
+
           this.cpf = dadosAtleta.cpf
           this.sexo = dadosAtleta.sexo
           this.cep = dadosAtleta.cep
@@ -84,18 +101,31 @@ export class AtletaComponent {
           this.uf = dadosAtleta.uf
 
           this.cdr.detectChanges()
+
         },
+
         error: (msgErro) => {
-          console.log('ERRO AO LISTAR ATLETA ', msgErro)
+
+          console.log(
+            'ERRO AO LISTAR ATLETA ',
+            msgErro
+          )
+
         }
+
       })
+
   }
 
   enviarDadosAtleta() {
+
     const atleta = new Atleta()
 
     atleta.nome = this.nome
-    atleta.dataNascimento = this.dataNascimento
+
+    // CORRIGIDO
+    atleta.data_nascimento = this.dataNascimento
+
     atleta.cpf = this.cpf
     atleta.sexo = this.sexo
     atleta.cep = this.cep
@@ -105,31 +135,51 @@ export class AtletaComponent {
     atleta.uf = this.uf
 
     if (this.editar) {
+
       atleta.id = this.idAtleta
 
       this.atletaService.alterarAtleta(atleta)
         .subscribe({
+
           next: (resposta) => {
+
             console.log(resposta)
+
           },
+
           error: (msgErro) => {
+
             console.log(msgErro)
+
           }
+
         })
 
     } else {
+
       this.atletaService.salvarAtleta(atleta)
         .subscribe({
+
           next: (resposta) => {
+
             console.log(resposta)
+
           },
+
           error: (msgErro) => {
+
             console.log(msgErro)
+
           }
+
         })
+
     }
 
     this.limparDados()
+
     this.atletaService.listarAtletas()
+
   }
+
 }

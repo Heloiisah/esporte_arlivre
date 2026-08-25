@@ -12,7 +12,6 @@ import { Router } from '@angular/router';
 })
 export class AtletaListComponent {
 
-  // listaAtletas: Atleta[] = []
   listaAtletas = signal<Atleta[]>([]);
 
   constructor(
@@ -31,9 +30,6 @@ export class AtletaListComponent {
       .subscribe({
 
         next: (dadosAtletas) => {
-
-          // this.listaAtletas = [...dadosAtletas]
-          //   .sort((a, b) => a.nome.localeCompare(b.nome))
 
           this.listaAtletas.set(
             [...dadosAtletas].sort(
@@ -56,7 +52,6 @@ export class AtletaListComponent {
       });
 
   }
-
 
   excluir(id: number) {
 
@@ -90,7 +85,6 @@ export class AtletaListComponent {
 
   }
 
-
   calcIdade(data_nascimento: string) {
 
     return this.listaService.calcularIdade(
@@ -98,7 +92,6 @@ export class AtletaListComponent {
     );
 
   }
-
 
   carregaDadosAtletaForm(atleta: Atleta) {
 
