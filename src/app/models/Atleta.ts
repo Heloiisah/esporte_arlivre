@@ -5,7 +5,6 @@ export class Atleta {
     cpf: number = 0;
     sexo: string = '';
     cep: number = 0;
-    rua_logradouro: string = '';
     bairro: string = '';
     cidade: string = '';
     uf: string = '';

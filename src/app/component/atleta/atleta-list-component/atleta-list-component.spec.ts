@@ -37,7 +37,6 @@ describe('AtletaService', () => {
         cpf: 12345678910,
         sexo: 'M',
         cep: 49123123,
-        rua_logradouro: 'rua_logradouro 1',
         bairro: 'Centro',
         cidade: 'Aracaju',
         uf: 'Se',
@@ -50,7 +49,6 @@ describe('AtletaService', () => {
         cpf: 11122233302,
         sexo: 'F',
         cep: 49123123,
-        rua_logradouro: 'rua_logradouro 2',
         bairro: 'Centro',
         cidade: 'Aracaju',
         uf: 'Se',
@@ -65,7 +63,7 @@ describe('AtletaService', () => {
       expect(atletas[0].nome).toBe('João');
       expect(atletas[1].nome).toBe('Maria');
     });
-
+//const request = httpMock.expectOne('http://localhost:3000/atletas')
     const requisicao = httpMock.expectOne(
       'https://6a7f6d923183f5fd884b1a61.mockapi.io/esportearlivre/atleta'
     );
@@ -75,5 +73,100 @@ describe('AtletaService', () => {
     requisicao.flush(atletas);
 
   });
+  
+  // POST
+  it('deve adicionar uma pessoa', () => {
+
+    const atleta: Atleta = {
+      nome: 'Maria Flor',
+      cpf: 12345678910,
+      sexo: 'M',
+      cep: 49123123,
+      ruaLogradouro: 'Rua Sei lá das quantas',
+      bairro: 'Centro',
+      cidade: 'Aracaju',
+      uf: 'Se',
+      data_nascimento: '2000-02-25',
+      id: 3
+    };
+
+
+    service.salvarAtleta(atleta).subscribe(atletas => {
+
+      expect(atletas).toEqual(atletas);
+
+    });
+
+
+    const request = httpMock.expectOne(
+      'https://6a7f6d923183f5fd884b1a61.mockapi.io/esportearlivre/atleta'
+    );
+
+
+    expect(request.request.method).toBe('POST');
+
+    expect(request.request.body).toEqual(atleta);
+
+    request.flush(atleta);
+
+  });
+
+
+  // PUT
+  it('deve editar um atleta', () => {
+
+    const atleta: Atleta = {
+      nome: 'João Souza',
+      cpf: 12345678910,
+      sexo: 'M',
+      cep: 49123123,
+      ruaLogradouro: 'Rua Sei lá das quantas',
+      bairro: 'Centro',
+      cidade: 'Aracaju',
+      uf: 'Se',
+      data_nascimento: '2000-02-25',
+      id: 1
+    };
+    service.alterarAtleta(atleta).subscribe(atletas => {
+
+      expect(atletas).toEqual(atleta);
+
+    });
+
+
+    const request = httpMock.expectOne(
+      'https://6a7f6d923183f5fd884b1a61.mockapi.io/esportearlivre/atleta/1'
+    );
+
+
+    expect(request.request.method).toBe('PUT');
+
+    expect(request.request.body).toEqual(atleta);
+
+
+    request.flush(atleta);
+
+  });
+
+
+  // DELETE
+  it('deve excluir um atleta', () => {
+
+    service.excluirAtleta(1).subscribe();
+
+
+    const request = httpMock.expectOne(
+      'https://6a7f6d923183f5fd884b1a61.mockapi.io/esportearlivre/atleta/1'
+    );
+
+
+    expect(request.request.method).toBe('DELETE');
+
+
+    request.flush(null);
+
+  });
 
 });
+
+
