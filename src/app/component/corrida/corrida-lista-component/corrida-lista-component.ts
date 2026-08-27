@@ -5,11 +5,10 @@ import { CorridaService } from '../../../service/corrida/corrida-service';
 import { Corrida } from '../../../models/Corrida';
 
 @Component({
-  selector: 'app-corrida-lista-component',
-  standalone: true,
-  imports: [],
-  templateUrl: './corrida-lista-component.html',
-  styleUrl: './corrida-lista-component.css',
+    selector: 'app-corrida-lista-component',
+    imports: [],
+    templateUrl: './corrida-lista-component.html',
+    styleUrl: './corrida-lista-component.css'
 })
 export class CorridaListaComponent {
 

@@ -6,11 +6,10 @@ import { AtletaService } from '../../../service/atleta-service';
 import { Atleta } from '../../../models/Atleta';
 
 @Component({
-  selector: 'app-atleta-component',
-  standalone: true,
-  imports: [FormsModule],
-  templateUrl: './atleta-component.html',
-  styleUrl: './atleta-component.css',
+    selector: 'app-atleta-component',
+    imports: [FormsModule],
+    templateUrl: './atleta-component.html',
+    styleUrl: './atleta-component.css'
 })
 export class AtletaComponent {
 

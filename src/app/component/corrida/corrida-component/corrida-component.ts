@@ -6,11 +6,10 @@ import { Corrida } from '../../../models/Corrida';
 import { CorridaService } from '../../../service/corrida/corrida-service';
 
 @Component({
-  selector: 'app-corrida-component',
-  standalone: true,
-  imports: [FormsModule],
-  templateUrl: './corrida-component.html',
-  styleUrl: './corrida-component.css',
+    selector: 'app-corrida-component',
+    imports: [FormsModule],
+    templateUrl: './corrida-component.html',
+    styleUrl: './corrida-component.css'
 })
 export class CorridaComponent {
 

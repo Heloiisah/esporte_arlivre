@@ -4,11 +4,10 @@ import { AtletaService } from '../../../service/atleta-service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-atleta-list-component',
-  standalone: true,
-  imports: [],
-  templateUrl: './atleta-list-component.html',
-  styleUrl: './atleta-list-component.css',
+    selector: 'app-atleta-list-component',
+    imports: [],
+    templateUrl: './atleta-list-component.html',
+    styleUrl: './atleta-list-component.css'
 })
 export class AtletaListComponent {
 
