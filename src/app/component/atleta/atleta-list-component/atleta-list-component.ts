@@ -1,4 +1,4 @@
-import { Component, ChangeDetectorRef, signal } from '@angular/core';
+import { Component, ChangeDetectorRef, signal, ChangeDetectionStrategy } from '@angular/core';
 import { Atleta } from '../../../models/Atleta';
 import { AtletaService } from '../../../service/atleta-service';
 import { Router } from '@angular/router';
@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
     selector: 'app-atleta-list-component',
     imports: [],
     templateUrl: './atleta-list-component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './atleta-list-component.css'
 })
 export class AtletaListComponent {

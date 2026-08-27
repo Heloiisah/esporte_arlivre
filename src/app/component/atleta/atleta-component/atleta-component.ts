@@ -1,4 +1,4 @@
-import { Component, ChangeDetectorRef } from '@angular/core';
+import { Component, ChangeDetectorRef, ChangeDetectionStrategy } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 
@@ -9,6 +9,7 @@ import { Atleta } from '../../../models/Atleta';
     selector: 'app-atleta-component',
     imports: [FormsModule],
     templateUrl: './atleta-component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './atleta-component.css'
 })
 export class AtletaComponent {

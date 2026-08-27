@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { CorridaService } from '../../../service/corrida/corrida-service';
@@ -8,6 +8,7 @@ import { Corrida } from '../../../models/Corrida';
     selector: 'app-corrida-lista-component',
     imports: [],
     templateUrl: './corrida-lista-component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './corrida-lista-component.css'
 })
 export class CorridaListaComponent {

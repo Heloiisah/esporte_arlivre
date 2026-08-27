@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClient, withXhr } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { of } from 'rxjs';
 
@@ -13,7 +13,7 @@ describe('CorridaComponent', () => {
     await TestBed.configureTestingModule({
       imports: [CorridaComponent],
       providers: [
-        provideHttpClient(),
+        provideHttpClient(withXhr()),
         {
           provide: ActivatedRoute,
           useValue: {

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -9,6 +9,7 @@ import { CorridaService } from '../../../service/corrida/corrida-service';
     selector: 'app-corrida-component',
     imports: [FormsModule],
     templateUrl: './corrida-component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './corrida-component.css'
 })
 export class CorridaComponent {

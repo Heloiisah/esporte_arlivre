@@ -1,5 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClient, withXhr } from '@angular/common/http';
 
 import { CorridaService } from './corrida-service';
 
@@ -12,7 +12,7 @@ describe('CorridaService', () => {
     TestBed.configureTestingModule({
       providers: [
         CorridaService,
-        provideHttpClient()
+        provideHttpClient(withXhr())
       ]
     });
 
