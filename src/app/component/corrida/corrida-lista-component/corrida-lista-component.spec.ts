@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideHttpClient } from '@angular/common/http';
 import { of } from 'rxjs';
+import { describe, it, expect, beforeEach, vi } from 'vitest';
 
 import { CorridaListaComponent } from './corrida-lista-component';
 import { CorridaService } from '../../../service/corrida/corrida-service';
@@ -15,7 +16,7 @@ describe('CorridaListaComponent', () => {
   let service: CorridaService;
 
 
-  beforeEach(async () => {
+  beforeEach(() => {
 
     TestBed.configureTestingModule({
 
@@ -29,6 +30,7 @@ describe('CorridaListaComponent', () => {
       ]
 
     });
+
 
     fixture = TestBed.createComponent(
       CorridaListaComponent
@@ -50,8 +52,9 @@ describe('CorridaListaComponent', () => {
   });
 
 
-  it('Deve retornar as corridas', () => {
+  it('deve carregar a lista de corridas', () => {
 
+    // Arrange
     const corridas: Corrida[] = [
 
       {
@@ -67,13 +70,15 @@ describe('CorridaListaComponent', () => {
     ];
 
 
-    spyOn(service, 'listarCorridas')
-      .and.returnValue(of(corridas)); 
+    vi.spyOn(service, 'listarCorridas')
+      .mockReturnValue(of(corridas));
 
 
+    // Act
     component.listar();
 
 
+    // Assert
     expect(
       component.listaCorridas().length
     ).toBe(2);
