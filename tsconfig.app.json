@@ -3,12 +3,17 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "./out-tsc/app",
-    "types": []
+    "target": "ES2022",
+    "types": [
+      "vitest/globals",
+      "node"
+    ]
   },
   "files": [
     "src/main.ts"
   ],
   "include": [
+    "src/**/*.spec.ts",
     "src/**/*.d.ts"
   ],
   "angularCompilerOptions": {
