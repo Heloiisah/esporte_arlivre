@@ -42,7 +42,9 @@ describe('AtletaService', () => {
         uf: 'Se',
         data_nascimento: '2000-02-25',
         id: 1,
-        ruaLogradouro: 'Rua Sei lá das quantas'
+        rua_logradouro: 'Rua Sei lá das quantas',
+        peso: 70,
+        altura: 1.75
       },
       {
         nome: 'Maria',
@@ -54,7 +56,9 @@ describe('AtletaService', () => {
         uf: 'Se',
         data_nascimento: '2010-02-20',
         id: 2,
-        ruaLogradouro: 'Rua Sei lá das quantas'
+        rua_logradouro: 'Rua Sei lá das quantas',
+        peso: 60,
+        altura: 1.65
       }
     ];
 
@@ -82,7 +86,9 @@ describe('AtletaService', () => {
       cpf: 12345678910,
       sexo: 'M',
       cep: 49123123,
-      ruaLogradouro: 'Rua Sei lá das quantas',
+      rua_logradouro: 'Rua Sei lá das quantas',
+      peso: 70,
+      altura: 1.75,
       bairro: 'Centro',
       cidade: 'Aracaju',
       uf: 'Se',
@@ -120,7 +126,9 @@ describe('AtletaService', () => {
       cpf: 12345678910,
       sexo: 'M',
       cep: 49123123,
-      ruaLogradouro: 'Rua Sei lá das quantas',
+      rua_logradouro: 'Rua Sei lá das quantas',
+      peso: 70,
+      altura: 1.75,
       bairro: 'Centro',
       cidade: 'Aracaju',
       uf: 'Se',

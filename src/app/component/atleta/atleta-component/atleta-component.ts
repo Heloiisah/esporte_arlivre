@@ -19,7 +19,7 @@ export class AtletaComponent {
   cpf = 0;
   sexo = '';
   cep = 0;
-  ruaLogradouro = '';
+  rua_logradouro = '';
   bairro = '';
   cidade = '';
   uf = '';
@@ -56,7 +56,7 @@ export class AtletaComponent {
     this.cpf = 0;
     this.sexo = '';
     this.cep = 0;
-    this.ruaLogradouro = '';
+    this.rua_logradouro = '';
     this.bairro = '';
     this.cidade = '';
     this.uf = '';
@@ -78,7 +78,7 @@ export class AtletaComponent {
           this.cpf = dadosAtleta.cpf;
           this.sexo = dadosAtleta.sexo;
           this.cep = dadosAtleta.cep;
-          this.ruaLogradouro = dadosAtleta.ruaLogradouro;
+          this.rua_logradouro = dadosAtleta.rua_logradouro;
           this.bairro = dadosAtleta.bairro;
           this.cidade = dadosAtleta.cidade;
           this.uf = dadosAtleta.uf;
@@ -112,7 +112,7 @@ export class AtletaComponent {
     atleta.cpf = this.cpf;
     atleta.sexo = this.sexo;
     atleta.cep = this.cep;
-    atleta.ruaLogradouro = this.ruaLogradouro;
+    atleta.rua_logradouro = this.rua_logradouro;
     atleta.bairro = this.bairro;
     atleta.cidade = this.cidade;
     atleta.uf = this.uf;

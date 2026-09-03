@@ -8,8 +8,8 @@ export class Atleta {
     bairro: string = '';
     cidade: string = '';
     uf: string = '';
-    ruaLogradouro: string = '';
+    rua_logradouro: string = '';
 
-    peso?: number;
-    altura?: number;
+    peso: number = 0;
+    altura: number = 0;
 }
