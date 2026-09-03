@@ -4,11 +4,11 @@ import { AtletaService } from '../../../service/atleta-service';
 import { Router } from '@angular/router';
 
 @Component({
-    selector: 'app-atleta-list-component',
-    imports: [],
-    templateUrl: './atleta-list-component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
-    styleUrl: './atleta-list-component.css'
+  selector: 'app-atleta-list-component',
+  imports: [],
+  templateUrl: './atleta-list-component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
+  styleUrl: './atleta-list-component.css'
 })
 export class AtletaListComponent {
 
@@ -21,7 +21,9 @@ export class AtletaListComponent {
   ) { }
 
   ngOnInit() {
+
     this.listar();
+
   }
 
   listar() {
@@ -31,6 +33,9 @@ export class AtletaListComponent {
 
         next: (dadosAtletas) => {
 
+          // MOSTRA NO CONSOLE OS DADOS QUE VIERAM DA API
+          console.log('DADOS QUE VIERAM DA API:', dadosAtletas);
+
           this.listaAtletas.set(
             [...dadosAtletas].sort(
               (a, b) => a.nome.localeCompare(b.nome)
@@ -38,12 +43,13 @@ export class AtletaListComponent {
           );
 
           this.cdr.detectChanges();
+
         },
 
         error: (msgErro) => {
 
           console.log(
-            "Erro ao listar Atletas ",
+            'Erro ao listar Atletas ',
             msgErro
           );
 
@@ -53,35 +59,47 @@ export class AtletaListComponent {
 
   }
 
-  excluir(id: number) {
+  calcularIMC(
+    peso: number | undefined,
+    altura: number | undefined
+  ): string {
 
-    if (confirm("Deseja Excluir o Atleta?")) {
-
-      this.listaService.excluirAtleta(id)
-        .subscribe({
-
-          next: (resposta) => {
-
-            console.log(
-              "Excluído com Sucesso!!! ",
-              resposta
-            );
-
-            this.listar();
-          },
-
-          error: (msgErro) => {
-
-            console.log(
-              "Erro ao excluir Atleta ",
-              msgErro
-            );
-
-          }
-
-        });
-
+    if (
+      !peso ||
+      !altura ||
+      peso <= 0 ||
+      altura <= 0
+    ) {
+      return '-';
     }
+
+    const imc = peso / (altura * altura);
+
+    return imc.toFixed(2);
+
+  }
+
+  verificarSobrepeso(
+    peso: number | undefined,
+    altura: number | undefined
+  ): string {
+
+    if (
+      !peso ||
+      !altura ||
+      peso <= 0 ||
+      altura <= 0
+    ) {
+      return '-';
+    }
+
+    const imc = peso / (altura * altura);
+
+    if (imc >= 25) {
+      return 'Sim';
+    }
+
+    return 'Não';
 
   }
 
@@ -90,6 +108,39 @@ export class AtletaListComponent {
     return this.listaService.calcularIdade(
       data_nascimento
     );
+
+  }
+
+  excluir(id: number) {
+
+    if (confirm('Deseja Excluir o Atleta?')) {
+
+      this.listaService.excluirAtleta(id)
+        .subscribe({
+
+          next: (resposta) => {
+
+            console.log(
+              'Excluído com Sucesso!!! ',
+              resposta
+            );
+
+            this.listar();
+
+          },
+
+          error: (msgErro) => {
+
+            console.log(
+              'Erro ao excluir Atleta ',
+              msgErro
+            );
+
+          }
+
+        });
+
+    }
 
   }
 

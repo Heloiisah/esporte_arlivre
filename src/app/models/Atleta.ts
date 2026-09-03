@@ -9,4 +9,7 @@ export class Atleta {
     cidade: string = '';
     uf: string = '';
     ruaLogradouro: string = '';
+
+    peso?: number;
+    altura?: number;
 }

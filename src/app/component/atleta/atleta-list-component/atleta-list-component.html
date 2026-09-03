@@ -12,7 +12,11 @@
                 {{elem.nome}} -
                 {{calcIdade(elem.data_nascimento)}} anos -
                 {{elem.cpf}} -
-                {{elem.cidade}} / {{elem.uf}}
+                {{elem.cidade}} / {{elem.uf}} -
+                Peso: {{elem.peso}} kg -
+                Altura: {{elem.altura}} m -
+                IMC: {{calcularIMC(elem.peso, elem.altura)}} -
+                Sobrepeso: {{verificarSobrepeso(elem.peso, elem.altura)}}
 
             </span>
 
