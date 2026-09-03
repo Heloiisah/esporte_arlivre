@@ -73,7 +73,12 @@ export class AtletaListComponent {
       return '-';
     }
 
-    const imc = peso / (altura * altura);
+    let alturaReal = altura;
+    if (alturaReal > 3) {
+      alturaReal = alturaReal / 100;
+    }
+
+    const imc = peso / (alturaReal * alturaReal);
 
     return imc.toFixed(2);
 
@@ -93,7 +98,12 @@ export class AtletaListComponent {
       return '-';
     }
 
-    const imc = peso / (altura * altura);
+    let alturaReal = altura;
+    if (alturaReal > 3) {
+      alturaReal = alturaReal / 100;
+    }
+
+    const imc = peso / (alturaReal * alturaReal);
 
     if (imc >= 25) {
       return 'Sim';
