@@ -69,7 +69,7 @@ describe('AtletaService', () => {
     });
 //const request = httpMock.expectOne('http://localhost:3000/atletas')
     const requisicao = httpMock.expectOne(
-      'https://6a7f6d923183f5fd884b1a61.mockapi.io/esportearlivre/atleta'
+      'http://127.0.0.1:8000/pessoa/'
     );
     
     expect(requisicao.request.method).toBe('GET');
@@ -105,7 +105,7 @@ describe('AtletaService', () => {
 
 
     const request = httpMock.expectOne(
-      'https://6a7f6d923183f5fd884b1a61.mockapi.io/esportearlivre/atleta'
+      'http://127.0.0.1:8000/pessoa/'
     );
 
 
@@ -143,7 +143,7 @@ describe('AtletaService', () => {
 
 
     const request = httpMock.expectOne(
-      'https://6a7f6d923183f5fd884b1a61.mockapi.io/esportearlivre/atleta/1'
+      'http://127.0.0.1:8000/pessoa/1'
     );
 
 
@@ -164,7 +164,7 @@ describe('AtletaService', () => {
 
 
     const request = httpMock.expectOne(
-      'https://6a7f6d923183f5fd884b1a61.mockapi.io/esportearlivre/atleta/1'
+      'http://127.0.0.1:8000/pessoa/1'
     );
 
 

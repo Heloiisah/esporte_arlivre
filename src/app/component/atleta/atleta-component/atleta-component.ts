@@ -39,7 +39,7 @@ export class AtletaComponent {
   ngOnInit() {
 
     this.idAtleta = Number(
-      this.http.snapshot.paramMap.get('id')
+      this.http.snapshot?.paramMap?.get('id') ?? 0
     );
 
     if (this.idAtleta > 0) {

@@ -19,7 +19,10 @@ describe('CorridaComponent', () => {
           useValue: {
             params: of({}),
             snapshot: {
-              params: {}
+              params: {},
+              paramMap: {
+                get: () => null
+              }
             }
           }
         }

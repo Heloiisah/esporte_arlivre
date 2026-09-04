@@ -19,7 +19,10 @@ describe('AtletaComponent', () => {
           useValue: {
             params: of({}),
             snapshot: {
-              params: {}
+              params: {},
+              paramMap: {
+                get: () => null
+              }
             }
           }
         }
